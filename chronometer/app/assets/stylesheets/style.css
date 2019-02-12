@@ -1,0 +1,81 @@
+body {
+	background-color: #9aa1a5;
+	color: #eee;	
+}
+
+li {
+	list-style: none;
+}
+
+.content {
+	width: 100%;
+	text-align: center;
+}
+
+#login {
+	display: none;
+	padding: 15px 15px 15px 15px;
+}
+
+#topBar {
+	width: 100%;
+}
+
+#topBar .title {
+	color: #eee;
+	text-align: center;
+	width: 100%;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#topBar .menuBtn {
+	width: 30px;
+	height: 30px;
+	top: 0px;
+	left: 0px;
+	background-color: black;
+	position: absolute;
+	
+	cursor: pointer;
+}
+
+#topBar .menu {
+	position: absolute;
+	top: 30px;
+	left: 0px;
+	width: 160px;
+	background-color: black; 
+	padding-bottom: 30px;
+	display: none;
+}
+
+#topBar .menu ul {
+	padding-left: 20px;
+}
+
+#topBar .menu ul li {
+	margin-bottom: 8px;
+}
+
+#topBar .menu ul a, #topBar .menu ul a:visited {
+	text-decoration: none;	
+	color: #eee;
+}
+
+.content ul.menu {
+	padding-left: 0px;
+}
+
+.content ul.menu li {
+	padding: 10px 5px 10px 5px;
+	background-color: #eff0f2;
+	color: #31343a;
+	margin: 0px 0px 7px 0px;
+	
+}
+
+.content a {
+	text-decoration: none;
+
+}

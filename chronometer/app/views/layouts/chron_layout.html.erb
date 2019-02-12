@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml">
+	<head>
+		<title>CHRONOMETER</title>
+		<%= stylesheet_link_tag "style" %>
+		<%= javascript_include_tag "jquery-3.3.1.min.js" %>
+	</head>
+	<body>
+		<div id="topBar">
+			<div class="menuBtn" onClick="$('#topBar .menu').slideToggle()">
+				
+			</div>
+			<div class="menu">
+				<ul>
+					<li>Starter</li>
+					<li>Finisher</li>
+					<li>Results</li>
+					<a href="/races"><li>Manage races</li></a>
+			</div>
+			<div class="title">
+				Chronometer
+			</div>
+		</div>
+		<%= yield %>
+	</body>
+</html>
