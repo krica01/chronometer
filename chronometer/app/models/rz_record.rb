@@ -1,0 +1,2 @@
+class RzRecord < ApplicationRecord
+end

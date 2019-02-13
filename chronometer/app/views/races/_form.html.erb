@@ -17,9 +17,18 @@
   </div>
   
   <div class="field">
-	Number of racers
-    <%= hidden_field_tag :no_racers, 3 %>
+	<label>RZ</label>
+	<input type="text" value="1" id="noOfRZTxt" onChange="$('#no_rzs').val($(this).val())"/>
+    <%= hidden_field_tag :no_rzs, 1 %>
   </div>
+  
+  <div class="field">
+	<label>Racers</label>
+	<input type="text" value="1" id="noOfRacersTxt" onChange="$('#no_racers').val($(this).val())"/>
+    <%= hidden_field_tag :no_racers, 1 %>
+  </div>
+  
+  
 
   <div class="field">
     <%= form.label :place %>
@@ -28,7 +37,7 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.datetime_select :date %>
+    <%= form.date_select :date %>
   </div>
 
   <div class="actions">

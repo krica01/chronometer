@@ -7,6 +7,10 @@ li {
 	list-style: none;
 }
 
+#content {
+	padding: 0px 0px 0px 10px
+}
+
 .content {
 	width: 100%;
 	text-align: center;
@@ -46,16 +50,17 @@ li {
 	left: 0px;
 	width: 160px;
 	background-color: black; 
-	padding-bottom: 30px;
 	display: none;
 }
 
 #topBar .menu ul {
-	padding-left: 20px;
+	padding: 0px 10px 0px 10px;
 }
 
 #topBar .menu ul li {
 	margin-bottom: 8px;
+	border: solid 1px #eee;
+	padding: 3px 5px 3px 5px;
 }
 
 #topBar .menu ul a, #topBar .menu ul a:visited {
@@ -79,3 +84,29 @@ li {
 	text-decoration: none;
 
 }
+
+.field {
+	margin-bottom: 5px;
+}
+
+.field label {
+	width: 50px;
+	display: block;
+	float: left;
+}
+
+ul.list {
+	padding: 0px;
+}
+
+ul.list li {
+	padding: 3px 10px 3px 10px;
+	border: solid 1px #eff0f2;
+	margin-bottom: 7px;
+}
+
+ul.list a {
+	color: #eee;
+	text-decoration: none;
+}
+

@@ -1,0 +1,11 @@
+<h1><%= @race.name %> - RZ<%= @rz.id %></h1>
+
+<ul class="list">
+	<% @race.racers.each do |rz| %>
+		<a href=""><li>Racer <%= rz.id %></li></a>
+
+	<% end %>
+</ul>
+
+<%= link_to 'Show', @race %> |
+<%= link_to 'Back', races_path %>

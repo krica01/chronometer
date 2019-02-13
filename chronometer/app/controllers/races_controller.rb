@@ -29,17 +29,28 @@ class RacesController < ApplicationController
     @race = Race.new(race_params)
 
 	
-	num = params[:race][:no_racers].to_i
+	num = params[:no_racers].to_i
 
 	i = 0
 	#$num = 5
 
-	until i > num  do
-
-
-   		puts("Inside the loop i = #$i" )
-   		@racer = Racer.new(:number => i, :name => "s")
+	(1..num).each do |i|
+		puts "Racer - " + i.to_s
+   		@racer = Racer.new(:id => i, :name => "s")
 		@race.racers << @racer
+   		i +=1
+	end
+	
+	
+	num = params[:no_rzs].to_i
+	
+	i = 1
+	#$num = 5
+	
+	(1..num).each do |i|
+		puts "RZ - " + i.to_s
+   		@rz = Rz.new(:id => i, :name => "s")
+		@race.rzs << @rz
    		i +=1
 	end
 		
@@ -77,6 +88,31 @@ class RacesController < ApplicationController
       format.html { redirect_to races_url, notice: 'Race was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  
+  # SHOW race RZ /race/1/show-rzs
+  def show_rzs
+  	@race = Race.find_by(:id => params[:id])
+  	
+    render action: "showrzs.html.erb"
+  
+  end
+  
+  # SHOW race RZ /race/1/start-rz/1
+  def start_rz
+  	@race = Race.find_by(:id => params[:id])
+  	@rz = Rz.find_by(:id => params[:rzid], :race_id => params[:id])
+  	
+    render action: "startrz.html.erb"
+  end
+  
+    # SHOW start races list
+    #races/start-races
+  def start_races
+  	@races = Race.all
+  	
+    render action: "startraces.html.erb"
   end
 
   private
