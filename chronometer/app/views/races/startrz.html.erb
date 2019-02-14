@@ -2,10 +2,18 @@
 
 <ul class="list">
 	<% @race.racers.each do |rz| %>
-		<a href=""><li>Racer <%= rz.id %></li></a>
+		<li onClick="$('#start<%= rz.id %>').slideToggle()">Racer <%= rz.id %></li>
+		<li id="start<%= rz.id %>" class="start-form">
+			<div class="timer"> 
+
+			</div>
+			<div>
+				<a href="" class="startBtn">RACER <%= rz.id %> START</a>
+			</div>
+		</li>
 
 	<% end %>
 </ul>
 
-<%= link_to 'Show', @race %> |
-<%= link_to 'Back', races_path %>
+<a href="/races/<%= @race.id %>/show-rzs" class="backBtn">BACK</a>
+

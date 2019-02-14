@@ -14,3 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+setInterval(function(){ changeDate() }, 1000);
+
+function changeDate() {
+	$('.timer').text(new Date().toLocaleString())
+}
