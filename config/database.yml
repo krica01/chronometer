@@ -22,6 +22,6 @@ test:
 
 production:
   <<: *default
-  database: chronometer_production
-  username: chronometer
+  database: dciur95b7go7o8
+  username: rypyrfcaamotar
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
