@@ -1,0 +1,138 @@
+body {
+	background-color: #9aa1a5;
+	color: #eee;	
+}
+
+li {
+	list-style: none;
+}
+
+#content {
+	padding: 0px 0px 0px 10px
+}
+
+.content {
+	width: 100%;
+	text-align: center;
+}
+
+#login {
+	display: none;
+	padding: 15px 15px 15px 15px;
+}
+
+#topBar {
+	width: 100%;
+}
+
+#topBar .title {
+	color: #eee;
+	text-align: center;
+	width: 100%;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+#topBar .menuBtn {
+	width: 30px;
+	height: 30px;
+	top: 0px;
+	left: 0px;
+	background-color: black;
+	position: absolute;
+	
+	cursor: pointer;
+}
+
+#topBar .menu {
+	position: absolute;
+	top: 30px;
+	left: 0px;
+	width: 160px;
+	background-color: black; 
+	display: none;
+}
+
+#topBar .menu ul {
+	padding: 0px 10px 0px 10px;
+}
+
+#topBar .menu ul li {
+	margin-bottom: 8px;
+	border: solid 1px #eee;
+	padding: 3px 5px 3px 5px;
+}
+
+#topBar .menu ul a, #topBar .menu ul a:visited {
+	text-decoration: none;	
+	color: #eee;
+}
+
+.content ul.menu {
+	padding-left: 0px;
+}
+
+.content ul.menu li {
+	padding: 10px 5px 10px 5px;
+	background-color: #eff0f2;
+	color: #31343a;
+	margin: 0px 0px 7px 0px;
+	
+}
+
+a {
+	text-decoration: none;
+	color: #eee;
+}
+
+.field {
+	margin-bottom: 5px;
+}
+
+.field label {
+	width: 50px;
+	display: block;
+	float: left;
+}
+
+ul.list {
+	padding: 0px;
+}
+
+ul.list li {
+	padding: 3px 10px 3px 10px;
+	border: solid 1px #eff0f2;
+	margin-bottom: 7px;
+}
+
+ul.list a {
+	color: #eee;
+	text-decoration: none;
+}
+
+.start-form {
+	display: none;
+	border-top: 0px;
+}
+
+.start-form .timer {
+	
+}
+
+.start-form .startBtn {
+	display: block;
+	padding: 10px 10px 10px 10px;
+	background-color: #10990d;
+	width: 155px;
+	text-align: center;
+	margin: 7px 0px 7px 0px;
+}
+
+a.backBtn {
+	display: block;
+	padding: 3px 10px 3px 10px;
+	border: solid 1px #eff0f2;
+	width: 40px;
+	font-size: 80%;
+	
+}
