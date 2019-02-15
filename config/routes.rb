@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  
+  
   get 'races/start-races' => 'races#start_races'
   
   resources :races
@@ -9,5 +12,5 @@ Rails.application.routes.draw do
 	get 'races/:id/show-rzs' => 'races#show_rzs'
 	get 'races/:id/start-rz/:rzid' => 'races#start_rz'
 	
-  
+  root :to => 'chronometer#hello'
 end

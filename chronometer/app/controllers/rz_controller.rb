@@ -1,4 +1,0 @@
-class RzController < ApplicationController
-	
-
-end
