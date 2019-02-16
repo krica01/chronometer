@@ -3,8 +3,8 @@
 <ul class="list">
 	<% @race.racers.each do |racer| %>
 		
-		<% if Rz.isRacerStarted(@rz.id, racer.id) %>
-			<li>Racer <%= racer.id %> FINISHED</li>
+		<% if Rz.isRacerFinished(@rz.id, racer.id) %>
+			<li>Racer <%= racer.id %> FINISHED   <%= racer.getRzRecordTime(@rz.id) %></li>
 		
 		<% else %>
 			<li id="racerStart<%= racer.id %>" onClick="$('#start<%= racer.id %>').slideToggle()">Racer <%= racer.id %></li>
