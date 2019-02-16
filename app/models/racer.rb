@@ -2,9 +2,9 @@ class Racer < ApplicationRecord
 	belongs_to :Race
 	has_many :RzRecords
 	
-	def getRzRecord(id)
+	def getRzRecord(ids)
 		self.RzRecords.each do |rzrecord|
-			if rzrecord.id == id
+			if rzrecord.rz_id == ids && rzrecord.racer_id == self.id
 				return rzrecord
 			end
 		end
@@ -12,8 +12,8 @@ class Racer < ApplicationRecord
 	
 	def getRzRecordTime(id)
 		rzrecord = getRzRecord(id)
-		if rzrecord[0].present?
-			return rzrecord[0].rzTime
+		if rzrecord.present?
+			return rzrecord.rzTime
 		else
 			return ""
 		end
