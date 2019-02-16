@@ -1,7 +1,7 @@
 body {
 	background-color: #9aa1a5;
 	color: #eee;	
-	font-size: 150%;
+	font-size: 30px;
 }
 
 li {
@@ -104,6 +104,7 @@ ul.list li {
 	padding: 20px 25px 20px 25px;
 	border: solid 1px #eff0f2;
 	margin-bottom: 14px;
+	
 }
 
 ul.list a {
