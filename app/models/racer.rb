@@ -12,7 +12,7 @@ class Racer < ApplicationRecord
 	
 	def getRzRecordTime(id)
 		rzrecord = getRzRecord(id)
-		if rzrecord.present?
+		if rzrecord[0].present?
 			return rzrecord[0].rzTime
 		else
 			retunr ""
