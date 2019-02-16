@@ -15,7 +15,7 @@ class Racer < ApplicationRecord
 		if rzrecord[0].present?
 			return rzrecord[0].rzTime
 		else
-			retunr ""
+			return ""
 		end
 		
 	end
