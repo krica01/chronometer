@@ -1,6 +1,7 @@
 class Racer < ApplicationRecord
 	belongs_to :Race
 	has_many :RzRecords
+	has_many :Rzs
 	
 	def getRzRecord(ids)
 		self.RzRecords.each do |rzrecord|

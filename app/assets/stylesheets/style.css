@@ -152,3 +152,11 @@ a.backBtn {
 #login a {
 	font-size: 30px;
 }
+
+table.result-table {
+	width: 100%;
+}
+
+table.result-table td:first-of-type {
+	width: 70%px;
+}
