@@ -1,6 +1,7 @@
 body {
 	background-color: #9aa1a5;
 	color: #eee;	
+	font-size: 130%;
 }
 
 li {
@@ -34,8 +35,8 @@ li {
 }
 
 #topBar .menuBtn {
-	width: 30px;
-	height: 30px;
+	width: 60px;
+	height: 60px;
 	top: 0px;
 	left: 0px;
 	background-color: black;
@@ -46,7 +47,7 @@ li {
 
 #topBar .menu {
 	position: absolute;
-	top: 30px;
+	top: 60px;
 	left: 0px;
 	width: 160px;
 	background-color: black; 
@@ -135,4 +136,16 @@ a.backBtn {
 	width: 40px;
 	font-size: 80%;
 	
+}
+
+.content.hello {
+	margin-top: 270px;
+}
+.content.hello h1.hello {
+	font-size: 50px;
+	cursor: pointer;
+}
+
+#login a {
+	font-size: 30px;
 }

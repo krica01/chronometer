@@ -39,6 +39,7 @@ class RacesController < ApplicationController
    		@racer = Racer.new(:id => i, :name => "s")
 		@race.racers << @racer
    		i +=1
+   		
 	end
 	
 	
@@ -103,7 +104,7 @@ class RacesController < ApplicationController
   def start_rz
   	@race = Race.find_by(:id => params[:id])
   	@rz = Rz.find_by(:id => params[:rzid], :race_id => params[:id])
-  	
+
     render action: "startrz.html.erb"
   end
   
@@ -113,6 +114,33 @@ class RacesController < ApplicationController
   	@races = Race.all
   	
     render action: "startraces.html.erb"
+  end
+  
+  
+  
+  # SHOW race RZ /race/1/show-rzs
+  def show_rzs_finish
+  	@race = Race.find_by(:id => params[:id])
+  	
+    render action: "showrzs_finish.html.erb"
+  
+  end
+  
+  
+  # SHOW race RZ /race/1/start-rz/1
+  def finish_rz
+  	@race = Race.find_by(:id => params[:id])
+  	@rz = Rz.find_by(:id => params[:rzid], :race_id => params[:id])
+
+    render action: "finishrz.html.erb"
+  end
+  
+    # SHOW start races list
+    #races/start-races
+  def finish_races
+  	@races = Race.all
+  	
+    render action: "finishraces.html.erb"
   end
 
   private

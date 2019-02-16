@@ -1,0 +1,8 @@
+<h1>Finish races</h1>
+
+<ul class="list">
+	<% @races.each do |race| %>
+		<a href="/races/<%= race.id %>/show-rzs-finish"><li><%= race.name %></li></a>
+
+	<% end %>
+</ul>

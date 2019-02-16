@@ -18,5 +18,16 @@
 setInterval(function(){ changeDate() }, 1000);
 
 function changeDate() {
-	$('.timer').text(new Date().toLocaleString())
+	var date = new Date();
+
+    var options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+		minute: "2-digit",
+		hour: "2-digit",
+		second: "2-digit"
+    };
+
+	$('.timer').text(date.toLocaleDateString("en", options))
 }

@@ -1,0 +1,10 @@
+<h1><%= @race.name %></h1>
+
+<ul class="list">
+	<% @race.rzs.each do |rz| %>
+		<a href="finish-rz/<%= rz.id %>"><li>RZ<%= rz.id %></li></a>
+
+	<% end %>
+</ul>
+
+<a href="/races/finish-races" class="backBtn">BACK</a>
