@@ -1,10 +1,10 @@
 class Racer < ApplicationRecord
-	belongs_to :Race
-	has_many :RzRecords
-	has_many :Rzs
+	belongs_to :race
+	has_many :rz_records
+
 	
 	def getRzRecord(ids)
-		self.RzRecords.each do |rzrecord|
+		self.rz_records.each do |rzrecord|
 			if rzrecord.rz_id == ids && rzrecord.racer_id == self.id
 				return rzrecord
 			end

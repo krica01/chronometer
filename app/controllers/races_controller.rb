@@ -36,7 +36,8 @@ class RacesController < ApplicationController
 
 	(1..num).each do |i|
 		puts "Racer - " + i.to_s
-   		@racer = Racer.new(:id => i, :name => "s")
+   		@racer = Racer.new(:name => "Racer " + i.to_s )
+   		@racer.race = @race
 		@race.racers << @racer
    		i +=1
    		
@@ -50,10 +51,20 @@ class RacesController < ApplicationController
 	
 	(1..num).each do |i|
 		puts "RZ - " + i.to_s
-   		@rz = Rz.new(:id => i, :name => "s")
+  		@rz = Rz.new(:name => "RZ"+i.to_s)
 		@race.rzs << @rz
    		i +=1
 	end
+	
+	@race.rzs.each do |rz|
+		puts 'rzrecord RZ' + rz.id.to_s
+		@race.racers.each do |racer|
+				puts 'rzrecord Racer' + racer.id.to_s
+			@rzRecord = RzRecord.new()
+			@rzRecord.racer = racer
+			@rzRecord.rz = rz
+		end
+	end 
 		
 
     respond_to do |format|

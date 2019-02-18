@@ -2,14 +2,14 @@
 
 <div>
 	<% @race.rzs.each do |rz| %>
-		<h2>RZ<%= rz.id %></h2>
+		<h2><%= rz.name %></h2>
 			<div>
 				<table class="result-table">
 					<% 
 						@c = 1
 						rz.evalRzTimes.each do |rzRecord| %>
 						<tr>
-							<td><%= @c.to_s + '. Racer ' + rzRecord.racer_id.to_s %></td>
+							<td><%= @c.to_s + '. ' + rzRecord.racer.name %></td>
 							<td><%= rzRecord.rzTime %></td>
 						</tr>
 						<% @c = @c + 1 %>

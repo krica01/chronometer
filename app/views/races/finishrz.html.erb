@@ -4,10 +4,10 @@
 	<% @race.racers.each do |racer| %>
 		
 		<% if Rz.isRacerFinished(@rz.id, racer.id) %>
-			<li>Racer <%= racer.id %> FINISHED   <%= racer.getRzRecordTime(@rz.id) %></li>
+			<li><%= racer.name %> FINISHED   <%= racer.getRzRecordTime(@rz.id) %></li>
 		
 		<% else %>
-			<li id="racerStart<%= racer.id %>" onClick="$('#start<%= racer.id %>').slideToggle()">Racer <%= racer.id %></li>
+			<li id="racerStart<%= racer.id %>" onClick="$('#start<%= racer.id %>').slideToggle()"><%= racer.name %></li>
 		
 			<li id="start<%= racer.id %>" class="start-form">
 				<div class="timer" id="startTimer<%= racer.id %>"> 
@@ -15,14 +15,14 @@
 				</div>
 				<div>
 		
-				<input type="button" value="RACER <%= racer.id %> FINISH" class="startBtn" onClick="
+				<input type="button" value="<%= racer.name %> FINISH" class="startBtn" onClick="
 				var startTime = $('#startTimer<%= racer.id %>').text();
 				$.ajax({
 			type: 'GET',
 			url: '<%= finish_racer_url(:raceId => @race.id, :rzId => @rz.id, :racerId => racer.id) %>',
 			data: {startTime:  startTime},
 			success:    function(response, status) {
-						$('#racerStart<%= racer.id %>').text('Racer <%= racer.id %> FINISHED');
+						$('#racerStart<%= racer.id %>').text('<%= racer.name %> FINISHED');
 						$('#start<%= racer.id %>').remove();
 			}
 		 });">

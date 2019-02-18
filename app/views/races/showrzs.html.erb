@@ -2,7 +2,7 @@
 
 <ul class="list">
 	<% @race.rzs.each do |rz| %>
-		<a href="start-rz/<%= rz.id %>"><li>RZ<%= rz.id %></li></a>
+		<a href="start-rz/<%= rz.id %>"><li><%= rz.name %></li></a>
 
 	<% end %>
 </ul>

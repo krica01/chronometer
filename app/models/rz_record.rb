@@ -37,7 +37,7 @@ class RzRecord < ApplicationRecord
 		if self.startTime.present? && self.finishTime.present?
 			return Time.at(self.finishTime - self.startTime).utc.strftime("%H:%M:%S")
 		elsif self.startTime.present? && !self.finishTime.present?
-			return "DNF"
+			return "-"
 		elsif !self.startTime.present?
 			return "DNS"
 		end

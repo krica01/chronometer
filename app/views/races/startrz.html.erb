@@ -4,10 +4,10 @@
 	<% @race.racers.each do |racer| %>
 		
 		<% if Rz.isRacerStarted(@rz.id, racer.id) %>
-			<li>Racer <%= racer.id %> STARTED</li>
+			<li><%= racer.name %> STARTED</li>
 		
 		<% else %>
-			<li id="racerStart<%= racer.id %>" onClick="$('#start<%= racer.id %>').slideToggle()">Racer <%= racer.id %></li>
+			<li id="racerStart<%= racer.id %>" onClick="$('#start<%= racer.id %>').slideToggle()"><%= racer.name %></li>
 		
 			<li id="start<%= racer.id %>" class="start-form">
 				<div class="timer" id="startTimer<%= racer.id %>"> 
@@ -15,14 +15,14 @@
 				</div>
 				<div>
 		
-				<input type="button" value="RACER <%= racer.id %> START" class="startBtn" onClick="
+				<input type="button" value="<%= racer.name %> START" class="startBtn" onClick="
 				var startTime = $('#startTimer<%= racer.id %>').text();
 				$.ajax({
 			type: 'GET',
 			url: '<%= start_racer_url(:raceId => @race.id, :rzId => @rz.id, :racerId => racer.id) %>',
 			data: {startTime:  startTime},
 			success:    function(response, status) {
-						$('#racerStart<%= racer.id %>').text('Racer <%= racer.id %> STARTED');
+						$('#racerStart<%= racer.id %>').text('<%= racer.name %> STARTED');
 						$('#start<%= racer.id %>').remove();
 			}
 		 });">

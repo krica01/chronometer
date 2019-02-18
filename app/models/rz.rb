@@ -1,6 +1,7 @@
 class Rz < ApplicationRecord
-	has_many :RzRecords
-	belongs_to :Race
+	has_many :rz_records 
+	belongs_to :race
+
 
 	def self.isRacerStarted(rzId, racerId)
 		res = false
@@ -31,7 +32,7 @@ class Rz < ApplicationRecord
 	
 	
 	def evalRzTimes
-		return self.RzRecords.sort { |a,b| a.rzTime <=> b.rzTime }
+		return self.rz_records.sort { |a,b| a.rzTime <=> b.rzTime }
 	end
 	
 end

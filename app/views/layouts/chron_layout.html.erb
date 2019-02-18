@@ -6,6 +6,8 @@
 		<%= stylesheet_link_tag "style" %>
 		<%= javascript_include_tag "jquery-3.3.1.min.js" %>
 		<%= javascript_include_tag "application.js" %>
+		<%= csrf_meta_tags %>
+
 	</head>
 	<body>
 		<div id="topBar">
@@ -14,8 +16,8 @@
 			</div>
 			<div class="menu">
 				<ul>
-					<a href="/races/start-races"><li>Starter</li></a>
-					<a href="/races/finish-races"><li>Finisher</li></a>
+					<a href="/races/start-races"><li>Start</li></a>
+					<a href="/races/finish-races"><li>Finish</li></a>
 					<a href="/results/list-races"><li>Results</li></a>
 					<a href="/races"><li>Manage races</li></a>
 			</div>
