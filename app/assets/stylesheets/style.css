@@ -84,16 +84,28 @@ li {
 a {
 	text-decoration: none;
 	color: #eee;
+	cursor: pointer;
 }
 
 .field {
 	margin-bottom: 5px;
+	height: 40px;
 }
 
 .field label {
-	width: 50px;
+	width: 90px;
 	display: block;
 	float: left;
+}
+
+.field input {
+	height: 25px;
+	width: 250px;
+}
+
+.field select {
+	height: 30px;
+
 }
 
 ul.list {
@@ -141,6 +153,18 @@ a.backBtn {
 	
 }
 
+a.btn {
+	display: block;
+	padding: 6px 15px 6px 15px;
+	border: solid 1px #eff0f2;
+	font-size: 80%;
+	
+}
+
+a.submit {
+	width: 120px;
+}
+
 .content.hello {
 	margin-top: 270px;
 }
@@ -159,4 +183,9 @@ table.result-table {
 
 table.result-table td:first-of-type {
 	width: 70%px;
+}
+
+.actions {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }

@@ -17,22 +17,20 @@
   </div>
   
   <div class="field">
-	<label>RZ</label>
-	<input type="text" value="1" id="noOfRZTxt" onChange="$('#no_rzs').val($(this).val())"/>
+    <%= form.label :place %>
+    <%= form.text_field :place %>
+  </div>
+  
+  <div class="field">
+	<label>RZs</label>
+	<%= form.select "noOfRZTxt", options_for_select(1..99), {}, {:onChange => "$('#no_rzs').val($(this).val())" } %>
     <%= hidden_field_tag :no_rzs, 1 %>
   </div>
   
   <div class="field">
 	<label>Racers</label>
-	<input type="text" value="1" id="noOfRacersTxt" onChange="$('#no_racers').val($(this).val())"/>
+	<%= form.select "noOfRacersTxt", options_for_select(1..99), {}, {:onChange => "$('#no_racers').val($(this).val())" } %>
     <%= hidden_field_tag :no_racers, 1 %>
-  </div>
-  
-  
-
-  <div class="field">
-    <%= form.label :place %>
-    <%= form.text_field :place %>
   </div>
 
   <div class="field">
@@ -41,6 +39,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <a class="submit btn" onClick="$('form').submit()">Create race</a>
   </div>
 <% end %>
