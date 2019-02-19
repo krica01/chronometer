@@ -32,7 +32,7 @@ class Rz < ApplicationRecord
 	
 	
 	def evalRzTimes
-		return self.rz_records.sort { |a,b| a.rzTime <=> b.rzTime }
+		return self.rz_records.sort { |a,b| a.rzTimeSort <=> b.rzTimeSort }
 	end
 	
 end

@@ -39,6 +39,16 @@ class RzRecord < ApplicationRecord
 		elsif self.startTime.present? && !self.finishTime.present?
 			return "-"
 		elsif !self.startTime.present?
+			return "-"
+		end
+	end
+	
+	def rzTimeSort
+		if self.startTime.present? && self.finishTime.present?
+			return Time.at(self.finishTime - self.startTime).utc.strftime("%H:%M:%S")
+		elsif self.startTime.present? && !self.finishTime.present?
+			return "DNF"
+		elsif !self.startTime.present?
 			return "DNS"
 		end
 	end

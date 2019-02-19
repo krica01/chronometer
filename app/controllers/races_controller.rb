@@ -60,9 +60,11 @@ class RacesController < ApplicationController
 		puts 'rzrecord RZ' + rz.id.to_s
 		@race.racers.each do |racer|
 				puts 'rzrecord Racer' + racer.id.to_s
-			@rzRecord = RzRecord.new()
-			@rzRecord.racer = racer
-			@rzRecord.rz = rz
+			rzRecord = RzRecord.new()
+			rzRecord.racer = racer
+			rzRecord.rz = rz
+			rz.rz_records << rzRecord
+			racer.rz_records << rzRecord
 		end
 	end 
 		
