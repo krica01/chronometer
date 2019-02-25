@@ -169,12 +169,12 @@ a.submit {
 	margin-top: 270px;
 }
 .content.hello h1.hello {
-	font-size: 50px;
+	font-size: 80px;
 	cursor: pointer;
 }
 
 #login a {
-	font-size: 30px;
+	font-size: 70px;
 }
 
 table.result-table {
