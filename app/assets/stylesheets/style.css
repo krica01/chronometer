@@ -65,7 +65,29 @@ body {
   left:0;
   right: 0;
   z-index:10;
+   background-color: gray;
+  /* this should match the min-width in app-container. Recommend setting using a common variable (eg with Sass) */
+  min-width: 300px;
  
+  /* just arbitrary values */
+  height: 4em;
+  padding: 0em;
+ 
+  /* internal layout, centered vertically - flex layout is great for this */
+  display: flex;
+  flex-flow: row nowrap;
+  align-items:center;
+ 
+}
+
+#app-header .header {
+  /* fix the header to the top of the viewport. */
+  position: fixed;
+  top: 0;
+  left:0;
+  right: 0;
+  z-index:10;
+   background-color: gray;
   /* this should match the min-width in app-container. Recommend setting using a common variable (eg with Sass) */
   min-width: 300px;
  
@@ -77,7 +99,6 @@ body {
   display: flex;
   flex-flow: row nowrap;
   align-items:center;
- 
 }
  
 #app-header h1 {
@@ -110,10 +131,14 @@ li {
 #left-menu {
 	display: none;
 	width: 100%;
+	background-color: gray;
+	margin-top: 20em;
+	padding: 1em;
+	
 }
 
 #left-menu ul {
-	padding: 0px 0px 0px 10px;
+	padding: 0px 0px 0px 0px;
 
 }
 
@@ -121,6 +146,7 @@ li {
 	margin-bottom: 16px;
 	border: solid 1px #eee;
 	padding: 10px 15px 10px 15px;
+	text-align: center;
 
 }
 

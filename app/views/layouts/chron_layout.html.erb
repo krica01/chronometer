@@ -13,25 +13,25 @@
 	<body>
 		<div id ="app-container">
 			<div id="app-header">
-				<div id="app-header">
+				<div class="header">
 				  <i class="material-icons"  onClick="$('#left-menu').slideToggle()">menu</i>
 				  <h1><a href="/chronometer/homepage">Chronometer</a></h1>
 				  <i class="material-icons">add</i>
-				</div>				
+			
 				   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 					   rel="stylesheet" >
 				   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 					   rel="stylesheet" >
-				
-			</div>
-			<div id="left-menu">
+				</div>
+				<div id="left-menu">
 					<ul>
 						<a href="/races/start-races"><li>Start races</li></a>
 						<a href="/races/finish-races"><li>Finish races</li></a>
 						<a href="/results/list-races"><li>Results</li></a>
 						<a href="/races"><li>Manage races</li></a>
 					<ul>
-				</div>
+				</div>	
+			</div>	
 			<div id="main-content">
 				<%= yield %>
 			</div>
