@@ -1,7 +1,91 @@
+html,body {
+  box-sizing: border-box;
+}
+*, *:before, *:after { box-sizing: inherit; }
+ 
+/* Set full height: http://stackoverflow.com/questions/6654958/make-body-have-100-of-the-browser-height */
+html {
+  /* body will set it's height based on its parent, which is html */
+  height: 100%;
+ 
+  /* set full width as well */
+  width: 100%;
+}
 body {
-	background-color: #9aa1a5;
+  /* min-height is needed for pages that might scroll, ie they may contain _more_ than 100% of viewport height */
+  min-height: 100%;
+ 
+  /* needed to prevent unwanted scroll-bars */
+  margin: 0;
+  padding: 0;
+  
+  /* This is just so we can tell the body block apart from the app container */
+  background-color: gray;
+}
+
+body {
+
 	color: #eee;	
-	font-size: 30px;
+
+	font-family: "Arial Black", Gadget, sans-serif;
+}
+
+#app-container {
+ 
+  /* Set block height using the viewport height unit, and force it to be full height, even if the containing content does not require it */
+  min-height: 100vh;
+ 
+  /* center this block for larger viewports */
+  margin: 0 auto;
+ 
+  /*Use max-width for better browser handling of small windows
+  http://www.w3schools.com/css/css_max-width.asp
+  */
+  max-width: 31.25em;
+ 
+  /* Use min-width to prevent your design from being scrunched up in tiny viewports (and instead be replaced with horizontal scroll bars) 
+  */
+  min-width: 18.75em;
+   
+  /* Add padding around your content - this is just an arbitrary number */
+  padding: 1em;
+ 
+ 
+  /* Add sufficient top padding so the fixed header doesn't cover up main content by defailt.  This value should be a calculated value (eg using calc(), sass, etc):
+  padding for this container + height of app header; Here, that is 1em + 4em */ 
+  padding-top: 3em;
+  /* just used to so we can tell the content block apart from the body block */
+  
+}
+
+#app-header {
+  /* fix the header to the top of the viewport. */
+  position: fixed;
+  top: 0;
+  left:0;
+  right: 0;
+  z-index:10;
+ 
+  /* this should match the min-width in app-container. Recommend setting using a common variable (eg with Sass) */
+  min-width: 300px;
+ 
+  /* just arbitrary values */
+  height: 4em;
+  padding: 1em;
+ 
+  /* internal layout, centered vertically - flex layout is great for this */
+  display: flex;
+  flex-flow: row nowrap;
+  align-items:center;
+ 
+}
+ 
+#app-header h1 {
+  /* set the h1 block as the main flex block - it will fill all unused space in the block */
+  flex: 1;
+ 
+  /* center content inside the block */
+  text-align: center;
 }
 
 li {
@@ -22,53 +106,22 @@ li {
 	padding: 15px 15px 15px 15px;
 }
 
-#topBar {
-	width: 100%;
-	height: 100px;
-}
 
-#topBar .title {
-	color: #eee;
-	text-align: center;
-	width: 100%;
-	font-weight: bold;
-	font-size: 50px;
-	padding-top: 30px;
-}
-
-#topBar .menuBtn {
-	width: 100px;
-	height: 100px;
-	top: 0px;
-	left: 0px;
-	background-color: black;
-	position: absolute;
-	
-	cursor: pointer;
-}
-
-#topBar .menu {
-	position: absolute;
-	top: 100px;
-	left: 0px;
-	width: 250px;
-	background-color: black; 
+#left-menu {
 	display: none;
+	width: 100%;
 }
 
-#topBar .menu ul {
-	padding: 0px 10px 0px 10px;
+#left-menu ul {
+	padding: 0px 0px 0px 10px;
+
 }
 
-#topBar .menu ul li {
+#left-menu ul li {
 	margin-bottom: 16px;
 	border: solid 1px #eee;
 	padding: 10px 15px 10px 15px;
-}
 
-#topBar .menu ul a, #topBar .menu ul a:visited {
-	text-decoration: none;	
-	color: #eee;
 }
 
 .content ul.menu {
@@ -194,4 +247,8 @@ table.result-table td:first-of-type {
 .actions {
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+#main-content h1 {
+	font-size: 1.2em;
 }

@@ -7,26 +7,34 @@
 		<%= javascript_include_tag "jquery-3.3.1.min.js" %>
 		<%= javascript_include_tag "application.js" %>
 		<%= csrf_meta_tags %>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	</head>
 	<body>
-		<div id="topBar">
-			<div class="menuBtn" onClick="$('#topBar .menu').slideToggle()">
+		<div id ="app-container">
+			<div id="app-header">
+				<div id="app-header">
+				  <i class="material-icons"  onClick="$('#left-menu').slideToggle()">menu</i>
+				  <h1><a href="/chronometer/homepage">Chronometer</a></h1>
+				  <i class="material-icons">add</i>
+				</div>				
+				   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+					   rel="stylesheet" >
+				   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+					   rel="stylesheet" >
 				
 			</div>
-			<div class="menu">
-				<ul>
-					<a href="/races/start-races"><li>Start</li></a>
-					<a href="/races/finish-races"><li>Finish</li></a>
-					<a href="/results/list-races"><li>Results</li></a>
-					<a href="/races"><li>Manage races</li></a>
+			<div id="left-menu">
+					<ul>
+						<a href="/races/start-races"><li>Start races</li></a>
+						<a href="/races/finish-races"><li>Finish races</li></a>
+						<a href="/results/list-races"><li>Results</li></a>
+						<a href="/races"><li>Manage races</li></a>
+					<ul>
+				</div>
+			<div id="main-content">
+				<%= yield %>
 			</div>
-			<div class="title">
-				<a href="/chronometer/homepage">Chronometer</a>
-			</div>
-		</div>
-		<div id="content">
-			<%= yield %>
 		</div>
 	</body>
 </html>
