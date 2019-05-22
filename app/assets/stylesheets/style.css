@@ -278,3 +278,71 @@ table.result-table td:first-of-type {
 #main-content h1 {
 	font-size: 1.2em;
 }
+
+#main-content h1.finish {
+	font-size: 1.2em;
+	border-bottom: 1px solid
+}
+
+i.material-icons.record {
+	font-size: 10em;
+}
+
+.record-bar {
+	text-align: center;
+	position: fixed;
+	width: 100%;
+	padding-bottom: 2em;
+	left: 0px;
+	background-color: gray;
+	bottom: 0em;
+	
+}
+
+.time-bar {
+	text-align: center;
+	font-size: 1.5em;
+	padding-top: 0.5em;
+}
+
+#finishTime {
+	height: 1.7em;
+}
+
+#time-stop1 {
+	display: none;
+}
+
+#finish-list {
+	padding: 0px;
+}
+
+#finish-list li {
+	border: solid 1px;
+	padding: 1em;
+	margin-bottom: 1em;
+	padding: 1em;
+	
+}
+
+#finish-list select {
+	font-size: 2em;
+	color: #eee;
+}
+
+#f-list {
+	height: 100px;
+}
+
+i.material-icons.finishBtn {
+	font-size: 3em;
+	position: relative;
+	right: -0.6em;
+	bottom: -10px;
+} 
+i.material-icons.clear {
+	font-size: 3em;
+	position: relative;
+	right: -1.5em;
+	bottom: -10px;
+}	

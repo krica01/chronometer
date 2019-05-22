@@ -17,7 +17,13 @@
 
 setInterval(function(){ changeDate() }, 1000);
 
-function changeDate() {
+Number.prototype.pad = function (len) {
+    return (new Array(len+1).join("0") + this).slice(-len);
+}
+
+
+
+function changeDate2() {
 	var date = new Date();
 
     var options = {
@@ -30,4 +36,60 @@ function changeDate() {
     };
 
 	$('.timer').text(date.toLocaleDateString("en", options))
+}
+
+function changeDateTime() {
+	var date = new Date();
+
+    var options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+		minute: "2-digit",
+		hour: "2-digit",
+		second: "2-digit"
+    };
+
+	$('.timer-finish').text(date.toLocaleDateString("en", options))
+}
+
+function changeDate() {
+	var timestamp = Date.now();
+
+    var options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+		minute: "2-digit",
+		hour: "2-digit",
+		second: "2-digit"
+    };
+    
+    
+
+	//$('.timer').text(date.toLocaleDateString("en", options))
+	var times = new Date(timestamp);
+	var time = 
+	times.getDate().pad(2) + '/' + (times.getMonth()+1).pad(2) + '/' + times.getFullYear() + ' ' +
+	times.getHours().pad(2) + ':' + times.getMinutes().pad(2) + ':' + times.getSeconds().pad(2);
+	$('.timer').text(time);
+	
+}
+
+function sendFinishTime(timeLi, raceId, rzId) {
+	var userId = timeLi.children('select').val();
+	var finishTime = timeLi.children('span.startTimeLi').text();
+	
+	var url = '/race/' + raceId + '/finish/' + rzId + '/racer/' + userId;
+
+	
+	$.ajax({
+		type: 'GET',
+		url: url,
+		data: {startTime:  finishTime},
+	});
+	
+	timeLi.hide();
+
+	
 }

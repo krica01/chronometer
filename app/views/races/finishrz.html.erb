@@ -1,17 +1,39 @@
-<h1>Finish <%= @race.name %> - <%= @rz.name %></h1>
+<h1 class="finish">Finish <%= @race.name %> - <%= @rz.name %></h1>
 
-<ul class="list">
-	<% @race.racers.each do |racer| %>
+<div class="time-bar">
+	<div class="timer finish" id="finishTime">
+	</div>
+</div>
+<div id="f-list">
+	<ul id="finish-list">
+	</ul>
+</div>
+<div class="record-bar">
+	<i class="material-icons record" onClick="
 		
-		<% if Rz.isRacerFinished(@rz.id, racer.id) %>
-			<li><%= racer.name %> FINISHED   <%= racer.getRzRecordTime(@rz.id) %></li>
-		
-		<% else %>
-			<%= render 'shared/finish_li', racer: racer %>	
-			
-		<% end %>
-	<% end %>
-</ul>
+			var startTime = $('#finishTime').text();
+			if(startTime.length > 2) {
+				var racerId = 1;
+						$('#time-stop1').text(startTime);
+						$('#time-stop1').show();			
+						$('#finish-list').append('<li><span class=\'startTimeLi\'>'+ startTime +
+												'</span><br /><select name=\'racerId\' >' +
+												<% @race.racers.each do |racer| %>
+													<% if !Rz.isRacerFinished(@rz.id, racer.id) %>
+													'<option value=\'<%= racer.id %>\'><%= racer.name %></option>' +
+													<% end %>	
+												<% end %>
+												
+												'</select>' +
+												'<i class=\'material-icons finishBtn\' onClick=\'sendFinishTime($(this).parent(), <%= @race.id %>, <%= @rz.id %>)\'>check_box</i>' + 	
+												'<i class=\'material-icons clear\' onClick=\'$(this).parent().remove()\'>clear</i>' + 	
+													
+												'</li>'); 
+			}		
 
-<a href="/races/<%= @race.id %>/show-rzs-finish" class="backBtn">BACK</a>
+	
+	">radio_button_checked</i>
+</div>
+
+
 

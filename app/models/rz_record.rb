@@ -12,7 +12,7 @@ class RzRecord < ApplicationRecord
 			rzRecord.racer = racer
 		end
 		
-		rzRecord.startTime = Time.strptime(time, '%m/%d/%Y, %I:%M:%S %p')
+		rzRecord.startTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
 		
 		
 		return rzRecord
@@ -27,7 +27,9 @@ class RzRecord < ApplicationRecord
 			rzRecord.racer = racer
 		end
 		
-		rzRecord.finishTime = Time.strptime(time, '%m/%d/%Y, %I:%M:%S %p')
+		puts 'AAA'
+		puts time
+		rzRecord.finishTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
 		
 		
 		return rzRecord

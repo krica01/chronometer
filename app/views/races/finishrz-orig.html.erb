@@ -1,0 +1,17 @@
+<h1>Finish <%= @race.name %> - <%= @rz.name %></h1>
+
+<ul class="list">
+	<% @race.racers.each do |racer| %>
+		
+		<% if Rz.isRacerFinished(@rz.id, racer.id) %>
+			<li><%= racer.name %> FINISHED   <%= racer.getRzRecordTime(@rz.id) %></li>
+		
+		<% else %>
+			<%= render 'shared/finish_li', racer: racer %>	
+			
+		<% end %>
+	<% end %>
+</ul>
+
+<a href="/races/<%= @race.id %>/show-rzs-finish" class="backBtn">BACK</a>
+
