@@ -15,7 +15,7 @@
 				</div>
 				<div>
 		
-				<input type="button" value="<%= racer.name %> START" class="startBtn" onClick="
+				<a class="startBtn" onClick="
 				var startTime = $('#startTimer<%= racer.id %>').text();
 				$.ajax({
 			type: 'GET',
@@ -25,7 +25,7 @@
 						$('#racerStart<%= racer.id %>').text('<%= racer.name %> STARTED');
 						$('#start<%= racer.id %>').remove();
 			}
-		 });">
+		 });"><%= racer.name %> START</a>
 				</div>
 			</li>
 		<% end %>
