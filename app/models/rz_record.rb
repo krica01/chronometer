@@ -27,8 +27,9 @@ class RzRecord < ApplicationRecord
 			rzRecord.racer = racer
 		end
 		
-
-		rzRecord.finishTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
+		if rzRecord.startTime.present?
+			rzRecord.finishTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
+		end
 		
 		
 		return rzRecord
