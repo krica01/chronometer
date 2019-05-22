@@ -27,8 +27,7 @@ class RzRecord < ApplicationRecord
 			rzRecord.racer = racer
 		end
 		
-		puts 'AAA'
-		puts time
+
 		rzRecord.finishTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
 		
 		

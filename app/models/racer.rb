@@ -21,4 +21,63 @@ class Racer < ApplicationRecord
 		
 	end
 	
+	def getRaceTimeSort
+
+		array = []
+		
+		puts "RZS - userId" + self.id.to_s
+		self.race.rzs.each do |rz|
+				
+				puts "RZ ID - " + rz.id.to_s
+				
+				rzRecord = self.getRzRecord(rz.id)			
+
+				puts rzRecord
+				
+				if !rzRecord.present? || !rzRecord.startTime.present?
+					totalTime = "DNS"
+					return totalTime 
+				end
+				
+				if !rzRecord.finishTime.present?
+					totalTime = "DNF"
+					return totalTime 
+				end
+
+				array << getRzRecordTime(rz.id)
+				
+				
+							
+		end
+
+
+		total = 0
+		array.sum do |s|
+			
+			puts 'aaaa'
+  			puts s
+  			h, m, s = s.split(':').map(&:to_i)
+  			total = total + 60*60*h + 60*m + s
+		end
+		
+		
+
+		
+
+		puts total
+		return Time.at(total).utc.strftime("%H:%M:%S") 
+	
+	end
+	
+	
+	def getRaceTime
+		time = self.getRaceTimeSort 
+		if time == "DNF" || time == "DNS"
+			return "-"
+		end
+	
+		return time
+	end
+
+	
 end

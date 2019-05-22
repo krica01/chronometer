@@ -18,6 +18,23 @@
 			</div>
 
 	<% end %>
-</ul>
+</div>
+<div>
+	<h2>Overall results</h2>
+	<div>
+				<table class="result-table">
+					<% 
+						@c = 1
+						@race.evalRaceTimes.each do |racer| %>
+						<tr>
+							<td><%= racer.name %></td>
+							<td><%= racer.getRaceTime %></td>
+						</tr>
+						<% @c = @c + 1 %>
+					<% end %>
+				</table>
+			</div>
+
+</div>
 
 <a href="/results/list-races" class="backBtn">BACK</a>
