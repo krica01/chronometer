@@ -6,9 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Place</th>
-      <th>Date</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -16,12 +14,9 @@
     <% @races.each do |race| %>
       <tr>
         <td><%= race.name %></td>
-        <td><%= race.place %></td>
-
-        <td><%= link_to 'Show', race %></td>
-        <td><%= link_to 'Assign names',   assign_names_path(race) %></td>
-        <td><%= link_to 'Edit', edit_race_path(race) %></td>
-        <td><%= link_to 'Destroy', race, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Names',   assign_names_path(race), :class => "link" %></td>
+        <td><%= link_to 'Edit', edit_race_path(race), :class => "link" %></td>
+        <td><%= link_to 'Del', race, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Race', new_race_path %>
+<%= link_to 'New Race', new_race_path, :class => "link" %>

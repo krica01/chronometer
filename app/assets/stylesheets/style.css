@@ -348,3 +348,10 @@ i.material-icons.clear {
 	right: -1em;
 	bottom: -10px;
 }	
+
+a.link {
+    display: block;
+    float: left;
+    border: 1px solid;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+}
