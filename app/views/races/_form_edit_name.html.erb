@@ -1,0 +1,12 @@
+<a onClick="$('#editname-<%= racer.id %>').show()" style="display: block;">
+<div id="<%= racer.id %>">
+	<%= racer.display_name %>
+</div>
+</a>
+<div style="display:none" class="name-edit" id="editname-<%= racer.id %>">
+	<%= form_tag(assign_name_path(racer), method: 'post', remote: true ) do %>
+
+		<%= text_field_tag :nickname, racer.nickname %>
+		<input type="submit" value="OK" />
+	<% end %>
+</div>

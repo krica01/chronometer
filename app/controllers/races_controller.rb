@@ -155,6 +155,27 @@ class RacesController < ApplicationController
   	
     render action: "finishraces.html.erb"
   end
+  
+  # SHOW assign_names
+  def assign_names
+  	@race = Race.find_by(:id => params[:id])
+  	
+  	render action: "assign_names.html.erb"
+  end
+  
+  # PUT assign_name
+  def assign_name
+  	@racer = Racer.find_by(:id => params[:id])
+  	
+  	@racer.nickname = params[:nickname]
+  	
+  	@racer.save
+  	 respond_to do |format|
+        format.js {render action: "edit_name.html.erb"}
+    end
+  	
+
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -166,4 +187,6 @@ class RacesController < ApplicationController
     def race_params
       params.require(:race).permit(:name, :place, :date)
     end
+    
+    
 end

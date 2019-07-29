@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 	get 'races/start-races' => 'races#start_races'
 	get 'races/finish-races' => 'races#finish_races'
 	get 'results/list-races' => 'results#list_races'
+	
+	get 'races/assign_names/:id' => 'races#assign_names', :as => :assign_names
+	post 'races/assign_name/:id' => 'races#assign_name', :as => :assign_name	
   
 	resources :races
 	# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

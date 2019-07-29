@@ -35,4 +35,16 @@ class Rz < ApplicationRecord
 		return self.rz_records.sort { |a,b| a.rzTimeSort <=> b.rzTimeSort }
 	end
 	
+	def displayInResults
+		racerFinished = false
+		self.race.racers.each do |racer|
+			if Rz.isRacerFinished(self.id, racer.id)
+				racerFinished = true
+			end
+			
+		end
+		
+		return racerFinished
+	end
+	
 end

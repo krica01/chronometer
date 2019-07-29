@@ -1,22 +1,28 @@
 <h1><%= @race.name %> results</h1>
 
 <div>
-	<% @race.rzs.each do |rz| %>
-		<h2><%= rz.name %></h2>
-			<div>
-				<table class="result-table">
-					<% 
-						@c = 1
-						rz.evalRzTimes.each do |rzRecord| %>
-						<tr>
-							<td><%= @c.to_s + '. ' + rzRecord.racer.name %></td>
-							<td><%= rzRecord.rzTime %></td>
-						</tr>
-						<% @c = @c + 1 %>
-					<% end %>
-				</table>
-			</div>
+	<% @race.rzs.each do |rz| 
+	puts rz.name
+	puts "display in results aaaa"
+	puts rz.displayInResults.to_s
+			%>
+		<% if rz.displayInResults %>
+			<h2><%= rz.name %></h2>
+				<div>
+					<table class="result-table">
+						<% 
+							@c = 1
+							rz.evalRzTimes.each do |rzRecord| %>
+							<tr>
+								<td><%= @c.to_s + '. ' + rzRecord.racer.display_name %></td>
+								<td><%= rzRecord.rzTime %></td>
+							</tr>
+							<% @c = @c + 1 %>
+						<% end %>
+					</table>
+				</div>
 
+		<% end %>
 	<% end %>
 </div>
 <div>
@@ -27,7 +33,7 @@
 						@c = 1
 						@race.evalRaceTimes.each do |racer| %>
 						<tr>
-							<td><%= racer.name %></td>
+							<td><%= racer.display_name %></td>
 							<td><%= racer.getRaceTime %></td>
 						</tr>
 						<% @c = @c + 1 %>

@@ -27,7 +27,9 @@ class Racer < ApplicationRecord
 		
 		puts "RZS - userId" + self.id.to_s
 		self.race.rzs.each do |rz|
-				
+			puts "display in results"
+			puts rz.displayInResults
+			if rz.displayInResults
 				puts "RZ ID - " + rz.id.to_s
 				
 				rzRecord = self.getRzRecord(rz.id)			
@@ -45,7 +47,7 @@ class Racer < ApplicationRecord
 				end
 
 				array << getRzRecordTime(rz.id)
-				
+			end	
 				
 							
 		end
@@ -54,7 +56,6 @@ class Racer < ApplicationRecord
 		total = 0
 		array.sum do |s|
 			
-			puts 'aaaa'
   			puts s
   			h, m, s = s.split(':').map(&:to_i)
   			total = total + 60*60*h + 60*m + s
@@ -69,11 +70,18 @@ class Racer < ApplicationRecord
 	
 	end
 	
+	def display_name
+		display = name
+		if nickname.to_s.size > 0
+			display += " - " + nickname.to_s
+		end
+		return display
+	end
 	
 	def getRaceTime
 		time = self.getRaceTimeSort 
 		if time == "DNF" || time == "DNS"
-			return "-"
+			#return "-"
 		end
 	
 		return time

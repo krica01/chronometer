@@ -1,0 +1,12 @@
+<h1>Assign names - <%= @race.name %></h1>
+
+	<ul class="list">
+		<% @race.racers.each do |racer| %>
+			<li id="editname-li-<%= racer.id %>">
+				<%= render :partial => "form_edit_name", :locals => {:racer => racer } %>
+			</li>
+		<% end %>	
+	</ul>
+
+<a href="/races/<%= @race.id %>/show-rzs" class="backBtn">BACK</a>
+
