@@ -2,6 +2,8 @@ class RzRecord < ApplicationRecord
 	belongs_to :rz
 	belongs_to :racer
 	
+	default_scope { order(id: :asc) }
+	
 		
 	def self.startRzRecord(rz, racer, time)
 		rzRecord = RzRecord.find_by(:racer_id => racer.id, :rz_id => rz.id)

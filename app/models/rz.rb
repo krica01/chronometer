@@ -1,6 +1,8 @@
 class Rz < ApplicationRecord
 	has_many :rz_records 
 	belongs_to :race
+	
+	default_scope { order(id: :asc) }
 
 
 	def self.isRacerStarted(rzId, racerId)

@@ -2,6 +2,8 @@ class Racer < ApplicationRecord
 	belongs_to :race
 	has_many :rz_records
 
+  default_scope { order(id: :asc) }
+
 	
 	def getRzRecord(ids)
 		self.rz_records.each do |rzrecord|
