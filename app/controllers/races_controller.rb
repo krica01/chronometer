@@ -62,6 +62,7 @@ class RacesController < ApplicationController
 				puts 'rzrecord Racer' + racer.id.to_s
 			rzRecord = RzRecord.new()
 			rzRecord.racer = racer
+			rzRecord.race = @race
 			rzRecord.rz = rz
 			rz.rz_records << rzRecord
 			racer.rz_records << rzRecord
