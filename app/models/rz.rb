@@ -50,7 +50,7 @@ class Rz < ApplicationRecord
 	end
 	
 	def getLiveRzRecords
-		liveRR = RzRecord.where(:rz_id => self.id).where('rzTimeString is not null').reorder('finishTime desc')
+		liveRR = RzRecord.where(:rz_id => self.id).where('rz_records.rzTimeString is not null').reorder('finishTime desc')
 		
 		return liveRR 
 	
