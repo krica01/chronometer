@@ -1,10 +1,10 @@
 <h1><%= @race.name %> live results</h1>
 
 <ul class="list">
-	<% @race.rzs.reverse().each do |rz| %>
-		<% if rz.displayInResults %>
+	<% @race.rzs.each do |rz| %>
+
 			<li><a href="/results/live/rz/<%= rz.id %>" ><%= rz.name %></a></li>
-		<% end %>
+
 	<% end %>
 </ul>
 <div>
