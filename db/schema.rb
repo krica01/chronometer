@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_221033) do
     t.boolean "finished"
     t.string "rzTimeString"
     t.integer "race_id"
+    t.string "rz_time_string"
     t.index ["racer_id"], name: "index_rz_records_on_racer_id"
     t.index ["rz_id"], name: "index_rz_records_on_rz_id"
   end
