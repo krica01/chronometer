@@ -1,0 +1,22 @@
+<h1><%= @rz.race.name %> live results <%= @rz.name %></h1>
+
+<div id="live-res">
+	<%= render :partial => 'liveresults.html.erb' %>
+</div>
+
+
+<script>
+function refresh() {
+				$.ajax({
+			type: 'GET',
+			url: '/results/refresh-live-results/<%= @rz.id %>'
+		
+		 });
+}
+
+window.setInterval(function(){
+  refresh()
+}, 3000);
+</script>
+
+<a href="/results/live/<%= @rz.race.id %>" class="backBtn">BACK</a>

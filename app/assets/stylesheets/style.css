@@ -269,7 +269,7 @@ table.result-table {
 }
 
 table.result-table td:first-of-type {
-	width: 70%px;
+	width: 70%;
 }
 
 .actions {

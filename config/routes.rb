@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 	get 'races/start-races' => 'races#start_races'
 	get 'races/finish-races' => 'races#finish_races'
 	get 'results/list-races' => 'results#list_races'
+	get 'results/live-races' => 'results#live_races'
+	get 'results/refresh-live-results/:id' => 'results#refresh_live_results'
 	
 	get 'races/assign_names/:id' => 'races#assign_names', :as => :assign_names
 	post 'races/assign_name/:id' => 'races#assign_name', :as => :assign_name	
@@ -22,6 +24,9 @@ Rails.application.routes.draw do
 	get 'races/:id/finish-rz/:rzid' => 'races#finish_rz'
 
 	get 'results/show/:id' => 'results#show_results'
+	get 'results/live/:id' => 'results#live_results'
+	get 'results/live/rz/:id' => 'results#live_results_rz'
+	
 	
   root :to => 'chronometer#hello'
   

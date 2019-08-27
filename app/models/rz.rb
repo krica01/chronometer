@@ -49,4 +49,11 @@ class Rz < ApplicationRecord
 		return racerFinished
 	end
 	
+	def getLiveRzRecords
+		liveRR = RzRecord.where(:rz_id => self.id).where('rzTimeString is not null').reorder('finishTime desc')
+		
+		return liveRR 
+	
+	end
+	
 end

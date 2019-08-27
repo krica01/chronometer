@@ -1,0 +1,10 @@
+<h1>Live results</h1>
+
+<ul class="list">
+	<% @races.each do |race| %>
+		<a href="/results/live/<%= race.id %>"><li><%= race.name %></li></a>
+
+	<% end %>
+</ul>
+
+<a href="/chronometer/homepage" class="backBtn">BACK</a>

@@ -2,20 +2,26 @@ class RzRecord < ApplicationRecord
 	belongs_to :rz
 	belongs_to :racer
 	
+	belongs_to :race
+	
 	default_scope { order(id: :asc) }
 	
 		
 	def self.startRzRecord(rz, racer, time)
+	
+		puts ' hello'
+		puts rz.id
 		rzRecord = RzRecord.find_by(:racer_id => racer.id, :rz_id => rz.id)
-		
+		puts rzRecord.id
+
 		if !rzRecord.present? 
 			rzRecord = RzRecord.new
 			rzRecord.rz = rz
 			rzRecord.racer = racer
+			
 		end
 		
 		rzRecord.startTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
-		
 		
 		return rzRecord
 	end
@@ -33,13 +39,24 @@ class RzRecord < ApplicationRecord
 			rzRecord.finishTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
 		end
 		
+		rzRecord.getRzTimeString
+		
+		rzRecord.race = rz.race
 		
 		return rzRecord
 	end
 	
+	def getRzTimeString
+		if !self.rzTimeString.present?
+			self.rzTimeString = Time.at(self.finishTime - self.startTime).utc.strftime("%H:%M:%S")
+		end
+			
+		return rzTimeString
+	end
+	
 	def rzTime
 		if self.startTime.present? && self.finishTime.present?
-			return Time.at(self.finishTime - self.startTime).utc.strftime("%H:%M:%S")
+			return getRzTimeString
 		elsif self.startTime.present? && !self.finishTime.present?
 			return "-"
 		elsif !self.startTime.present?
@@ -49,12 +66,16 @@ class RzRecord < ApplicationRecord
 	
 	def rzTimeSort
 		if self.startTime.present? && self.finishTime.present?
-			return Time.at(self.finishTime - self.startTime).utc.strftime("%H:%M:%S")
+			return getRzTimeString
 		elsif self.startTime.present? && !self.finishTime.present?
 			return "DNF"
 		elsif !self.startTime.present?
 			return "DNS"
 		end
+	end
+	
+	def showLastLive(race_id)
+		rzRecords = RzRecord.find_by(:race_id => race_id)
 	end
 	
 end

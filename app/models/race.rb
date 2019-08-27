@@ -1,6 +1,7 @@
 class Race < ApplicationRecord
 	has_many :racers
 	has_many :rzs
+	has_many :rz_records
 	
 	  default_scope { order(id: :asc) }
 	

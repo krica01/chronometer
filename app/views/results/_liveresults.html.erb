@@ -1,0 +1,14 @@
+<% @c= 1 %>
+	<% @rz.getLiveRzRecords.first(10).each do |rzRecord| %>
+				<div>
+					<table class="result-table">
+							<tr>
+								<td><%= rzRecord.racer.display_name %></td>
+								<td><%= rzRecord.rzTime %></td>
+							</tr>
+							<% @c = @c + 1 %>
+					</table>
+				</div>
+
+		
+	<% end %>
