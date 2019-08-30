@@ -89,5 +89,39 @@ class Racer < ApplicationRecord
 		return time
 	end
 
+
+	def calculateRaceTime(rzCount)
+		rzRecordsCount = RzRecord.where(:racer_id => self.id).where.not(:rz_time => nil).count
+		
+
+		if rzRecordsCount < rzCount
+			puts 'not finished all'
+			return nil
+		end 
+		
+		array = []
+		
+		
+		self.rz_records.each do |rzRecord|
+			puts 'rzRecord.rzTimeaa: ' + rzRecord.rzTimeString.to_s
+			
+			array << rzRecord.rzTimeString
+			
+		end
+		
+		total = 0
+		
+		array.sum do |s|
+			
+
+  			h, m, s = s.split(':').map(&:to_i)
+  			total = total + 60*60*h + 60*m + s
+		end
+		
+		
+		self.race_time_string = Time.at(total).utc.strftime("%H:%M:%S") 
+		
+		self.save
+	end
 	
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_221033) do
+ActiveRecord::Schema.define(version: 2019_08_30_222642) do
 
   create_table "racers", force: :cascade do |t|
     t.integer "race_id"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_221033) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname"
+    t.datetime "race_time"
+    t.string "race_time_string"
     t.index ["race_id"], name: "index_racers_on_race_id"
   end
 
@@ -40,8 +42,9 @@ ActiveRecord::Schema.define(version: 2019_08_26_221033) do
     t.boolean "reported"
     t.boolean "finished"
     t.string "rzTimeString"
-    t.integer "race_id"
     t.string "rz_time_string"
+    t.datetime "rz_time"
+    t.integer "race_id"
     t.index ["racer_id"], name: "index_rz_records_on_racer_id"
     t.index ["rz_id"], name: "index_rz_records_on_rz_id"
   end

@@ -7,22 +7,6 @@
 
 	<% end %>
 </ul>
-<div>
-	<h2>Overall results top 5</h2>
-	<div>
-				<table class="result-table">
-					<% 
-						@c = 1
-						@race.evalRaceTimes.first(5).each do |racer| %>
-						<tr>
-							<td><%= racer.display_name %></td>
-							<td><%= racer.getRaceTime %></td>
-						</tr>
-						<% @c = @c + 1 %>
-					<% end %>
-				</table>
-			</div>
 
-</div>
 
 <a href="/results/list-races" class="backBtn">BACK</a>

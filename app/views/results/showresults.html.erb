@@ -1,18 +1,13 @@
 <h1><%= @race.name %> results</h1>
 
 <div>
-	<% @race.rzs.each do |rz| 
-	puts rz.name
-	puts "display in results aaaa"
-	puts rz.displayInResults.to_s
-			%>
-		<% if rz.displayInResults %>
+	<% @race.rzs.each do |rz| %>
 			<h2><%= rz.name %></h2>
 				<div>
 					<table class="result-table">
 						<% 
 							@c = 1
-							rz.evalRzTimes.each do |rzRecord| %>
+							rz.getSortedRzRecords.each do |rzRecord| %>
 							<tr>
 								<td><%= @c.to_s + '. ' + rzRecord.racer.display_name %></td>
 								<td><%= rzRecord.rzTime %></td>
@@ -22,19 +17,20 @@
 					</table>
 				</div>
 
-		<% end %>
+
 	<% end %>
 </div>
+
 <div>
 	<h2>Overall results</h2>
 	<div>
 				<table class="result-table">
 					<% 
 						@c = 1
-						@race.evalRaceTimes.each do |racer| %>
+						@race.getOveralResults.each do |racer| %>
 						<tr>
 							<td><%= racer.display_name %></td>
-							<td><%= racer.getRaceTime %></td>
+							<td><%= racer.race_time_string %></td>
 						</tr>
 						<% @c = @c + 1 %>
 					<% end %>
@@ -42,5 +38,6 @@
 			</div>
 
 </div>
+
 
 <a href="/results/list-races" class="backBtn">BACK</a>

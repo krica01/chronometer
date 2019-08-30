@@ -37,6 +37,7 @@ class Rz < ApplicationRecord
 		return self.rz_records.sort { |a,b| a.rzTimeSort <=> b.rzTimeSort }
 	end
 	
+	# obsolete
 	def displayInResults
 		racerFinished = false
 		self.race.racers.each do |racer|
@@ -54,6 +55,10 @@ class Rz < ApplicationRecord
 		
 		return liveRR 
 	
+	end
+	
+	def getSortedRzRecords
+		rzRecords = RzRecord.where(:rz_id => self.id).where.not(:rz_time => nil).reorder('rz_time asc')
 	end
 	
 end
