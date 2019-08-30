@@ -36,6 +36,9 @@ class RzController < ApplicationController
   	puts params[:startTime]
   	puts @rzRecord.startTime
   	@rzRecord.race = @race
+  	
+  	puts 'XXX - rz_time' + @rzRecord.rz_time.to_s
+  	
   	@rzRecord.save
   	
   	render partial: "finish_racer.html.erb"

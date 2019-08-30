@@ -37,6 +37,7 @@ class RzRecord < ApplicationRecord
 		
 		if rzRecord.startTime.present?
 			rzRecord.finishTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
+			
 			rzRecord.rz_time = Time.at(rzRecord.finishTime - rzRecord.startTime).utc
 			rzRecord.getRzTimeString
 		end
