@@ -29,7 +29,7 @@
 						@c = 1
 						@race.getOveralResults.each do |racer| %>
 						<tr>
-							<td><%= racer.display_name %></td>
+							<td><%= @c.to_s + '. ' + racer.display_name %></td>
 							<td><%= racer.race_time_string %></td>
 						</tr>
 						<% @c = @c + 1 %>
