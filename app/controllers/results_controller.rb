@@ -4,7 +4,7 @@ class ResultsController < ApplicationController
 	# SHOW start races list
     #races/start-races
   	def list_races
-  		@races = Race.all
+  		@races = Race.all.where(:user_id => session[:user_id])
   	
     	render action: "startraces.html.erb"
 	end
@@ -18,7 +18,7 @@ class ResultsController < ApplicationController
 	
 	#races/live-races
   	def live_races
-  		@races = Race.all
+  		@races = Race.all.where(:user_id => session[:user_id])
   	
     	render action: "liveraces.html.erb"
 	end

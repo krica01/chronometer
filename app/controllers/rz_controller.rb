@@ -1,10 +1,10 @@
 class RzController < ApplicationController
 
+  before_action :logged_in_user
   protect_from_forgery with: :null_session
 	
   # AJAX /race/:raceId/start-rz/:rzId/racer/:racerId
   def start_racer
-	before_action :logged_in_user
 	
   	@race = Race.find_by(:id => params[:raceId])
   	@rz = Rz.find_by(:id => params[:rzId], :race_id => params[:raceId])

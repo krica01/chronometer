@@ -7,7 +7,7 @@ class RacesController < ApplicationController
   # GET /races
   # GET /races.json
   def index
-    @races = Race.all
+    @races = Race.all.where(:user_id => session[:user_id])
   end
 
   # GET /races/1
@@ -29,7 +29,7 @@ class RacesController < ApplicationController
   def create
     
     @race = Race.new(race_params)
-
+	@race.user_id = session[:user_id]
 	
 	num = params[:no_racers].to_i
 
@@ -127,7 +127,7 @@ class RacesController < ApplicationController
     # SHOW start races list
     #races/start-races
   def start_races
-  	@races = Race.all
+  	@races = Race.all.where(:user_id => session[:user_id])
   	
     render action: "startraces.html.erb"
   end
@@ -154,7 +154,7 @@ class RacesController < ApplicationController
     # SHOW start races list
     #races/start-races
   def finish_races
-  	@races = Race.all
+  	@races = Race.all.where(:user_id => session[:user_id])
   	
     render action: "finishraces.html.erb"
   end

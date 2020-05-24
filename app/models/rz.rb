@@ -1,7 +1,6 @@
 class Rz < ApplicationRecord
 	has_many :rz_records 
 	belongs_to :race
-	belongs_to :user
 	
 	default_scope { order(id: :asc) }
 
