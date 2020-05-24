@@ -1,4 +1,5 @@
 class RacesController < ApplicationController
+  before_action :logged_in_user
   before_action :set_race, only: [:show, :edit, :update, :destroy]
 
   layout "chron_layout"
@@ -26,6 +27,7 @@ class RacesController < ApplicationController
   # POST /races
   # POST /races.json
   def create
+    
     @race = Race.new(race_params)
 
 	

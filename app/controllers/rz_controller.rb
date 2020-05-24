@@ -4,7 +4,8 @@ class RzController < ApplicationController
 	
   # AJAX /race/:raceId/start-rz/:rzId/racer/:racerId
   def start_racer
-
+	before_action :logged_in_user
+	
   	@race = Race.find_by(:id => params[:raceId])
   	@rz = Rz.find_by(:id => params[:rzId], :race_id => params[:raceId])
   	@racer = Racer.find_by(:id => params[:racerId])

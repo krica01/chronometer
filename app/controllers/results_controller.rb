@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
-
+	before_action :logged_in_user
+	
 	# SHOW start races list
     #races/start-races
   	def list_races

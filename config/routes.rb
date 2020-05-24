@@ -33,6 +33,11 @@ Rails.application.routes.draw do
   get 'race/:raceId/start/:rzId/racer/:racerId' => 'rz#start_racer', :as => :start_racer
   get 'race/:raceId/finish/:rzId/racer/:racerId' => 'rz#finish_racer', :as => :finish_racer
   
+  get '/signup', to: 'users#new'
+  resources :users
   
+	get    '/login',   to: 'sessions#new'
+	post   '/login',   to: 'sessions#create'
+	get '/logout',  to: 'sessions#destroy'
   
 end

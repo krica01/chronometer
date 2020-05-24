@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_222642) do
+ActiveRecord::Schema.define(version: 2020_05_24_191055) do
 
   create_table "racers", force: :cascade do |t|
     t.integer "race_id"
@@ -54,7 +54,16 @@ ActiveRecord::Schema.define(version: 2019_08_30_222642) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["race_id"], name: "index_rzs_on_race_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

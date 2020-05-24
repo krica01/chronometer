@@ -356,3 +356,9 @@ a.link {
     padding: 0.2em 0.5em 0.2em 0.5em;
     margin-right: 0.5em;
 }
+
+.form label {
+	width: 120px;
+	display: block;
+	float: left;
+}
