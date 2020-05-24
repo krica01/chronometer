@@ -24,13 +24,19 @@
 					   rel="stylesheet" >
 				</div>
 				<div id="left-menu">
-					<ul>
-						<a href="/races/start-races"><li>Start races</li></a>
-						<a href="/races/finish-races"><li>Finish races</li></a>
-						<a href="/results/list-races"><li>Results</li></a>
-						<a href="/results/live-races"><li>Live results</li></a>
-						<a href="/races"><li>Manage races</li></a>
-					<ul>
+					<% if logged_in? %>
+						<ul>
+							<a href="/races/start-races"><li>Start races</li></a>
+							<a href="/races/finish-races"><li>Finish races</li></a>
+							<a href="/results/list-races"><li>Results</li></a>
+							<a href="/results/live-races"><li>Live results</li></a>
+							<a href="/races"><li>Manage races</li></a>
+						<ul>
+					<% else %>
+						<ul>
+							<a href="/signup"><li>Signup</li></a>
+						</ul>
+					<% end %>
 				</div>	
 			</div>	
 			<div id="main-content">
