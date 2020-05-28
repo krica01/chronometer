@@ -179,6 +179,38 @@ class RacesController < ApplicationController
   	
 
   end
+  
+  # PUT assign_name
+  def assign_race_permission
+  	@race = Race.find_by(:id => params[:id])
+  	
+  	user = User.find_by(:email => params[:user_email])
+  	
+  	@race_permission = RacePermission.new()
+  	@race_permission.race = @race
+  	@race_permission.user = user
+	puts 'AAAA'
+	puts @race_permission.user_id 
+	puts @race_permission.race_id 
+  	
+  	@race_permission.save
+  	
+  	puts @race_permission 
+
+	redirect_to :action => :edit
+
+  end
+  
+  
+  def delete_race_permission
+  	@race_permission = RacePermission.find(params[:race_permission_id])
+  	@race = Race.find(params[:id])
+  	
+  	@race_permission.destroy
+  	
+  	redirect_to :action => :edit
+  	
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

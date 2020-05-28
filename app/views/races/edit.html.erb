@@ -2,5 +2,24 @@
 
 <%= render 'form_edit', race: @race %>
 
+
+<h2>Contributors</h2>
+<ul>
+<% @race.race_permissions.each do |race_permission| %>
+	<li>
+		<%= race_permission.user.name %> - <%= race_permission.user.email %> 
+		<%= link_to "remove" , delete_race_permission_path(:race_permission_id => race_permission.id), :class => "submit btn"  %>
+		-----------------
+	</li>
+<% end %>
+</ul>
+
+<p>
+	<%= form_tag(assign_race_permission_path(@race), method: 'post' ) do %>
+		<%= label_tag 'Email' %>
+		<%= text_field_tag :user_email %>
+		<input type="submit" value="OK" />
+	<% end %>
+</p>
 <%= link_to 'Show', @race %> |
 <%= link_to 'Back', races_path %>

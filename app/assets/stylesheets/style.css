@@ -286,6 +286,9 @@ table.result-table td:first-of-type {
 	border-bottom: 1px solid
 }
 
+#main-content h2 {
+	font-size: 1.1em;
+}
 i.material-icons.record {
 	font-size: 10em;
 }

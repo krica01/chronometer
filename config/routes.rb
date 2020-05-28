@@ -39,5 +39,8 @@ Rails.application.routes.draw do
 	get    '/login',   to: 'sessions#new'
 	post   '/login',   to: 'sessions#create'
 	get '/logout',  to: 'sessions#destroy'
+	
+	post 'races/assign_race_permission/:id' => 'races#assign_race_permission', :as => :assign_race_permission	
+	get 'races/delete_race_permission/:id/:race_permission_id' => 'races#delete_race_permission', :as => :delete_race_permission	
   
 end
