@@ -18,7 +18,13 @@ class ResultsController < ApplicationController
 	
 	#races/live-races
   	def live_races
-  		@races = Race.all.where(:user_id => session[:user_id])
+  		@races = []
+  		if Race.find_by(:user_id => session[:user_id]) != nil
+  			@races << Race.find_by(:user_id => session[:user_id])
+  		end
+  		if !Race.getContributingRaces(session[:user_id]).nil?
+  			@races = @races | Race.getContributingRaces(session[:user_id])
+  		end	
   	
     	render action: "liveraces.html.erb"
 	end
