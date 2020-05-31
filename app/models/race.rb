@@ -27,4 +27,19 @@ class Race < ApplicationRecord
 
 	end
 	
+	def self.getContributingRaces(user_id)
+		racePermissions = []
+		racePermissions << RacePermission.find_by(:user_id => user_id)
+		races = []
+		racePermissions.each do |rp|
+			if !rp.nil?
+				races << rp.race
+			end
+		end
+		
+		return races
+		
+	end
+
+	
 end

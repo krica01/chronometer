@@ -127,8 +127,14 @@ class RacesController < ApplicationController
     # SHOW start races list
     #races/start-races
   def start_races
-  	@races = Race.all.where(:user_id => session[:user_id])
-  	
+  	@races = []
+  	if Race.find_by(:user_id => session[:user_id]) != nil
+  		@races << Race.find_by(:user_id => session[:user_id])
+  	end
+  	if !Race.getContributingRaces(session[:user_id]).nil?
+  		@races = @races | Race.getContributingRaces(session[:user_id])
+  	end	
+
     render action: "startraces.html.erb"
   end
   
@@ -154,7 +160,13 @@ class RacesController < ApplicationController
     # SHOW start races list
     #races/start-races
   def finish_races
-  	@races = Race.all.where(:user_id => session[:user_id])
+  	@races = []
+  	if Race.find_by(:user_id => session[:user_id]) != nil
+  		@races << Race.find_by(:user_id => session[:user_id])
+  	end
+  	if !Race.getContributingRaces(session[:user_id]).nil?
+  		@races = @races | Race.getContributingRaces(session[:user_id])
+  	end
   	
     render action: "finishraces.html.erb"
   end
