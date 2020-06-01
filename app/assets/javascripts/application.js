@@ -71,7 +71,7 @@ function changeDate() {
 	var times = new Date(timestamp);
 	var time = 
 	times.getDate().pad(2) + '/' + (times.getMonth()+1).pad(2) + '/' + times.getFullYear() + ' ' +
-	times.getHours().pad(2) + ':' + times.getMinutes().pad(2) + ':' + times.getSeconds().pad(2);
+	times.getHours().pad(2) + ':' + times.getMinutes().pad(2) + ':' + times.getSeconds().pad(2) + ':' + times.getMilliseconds().pad(3);
 	$('.timer').text(time);
 	
 }

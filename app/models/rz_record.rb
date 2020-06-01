@@ -21,7 +21,7 @@ class RzRecord < ApplicationRecord
 			
 		end
 		
-		rzRecord.startTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
+		rzRecord.startTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S:%L')
 		
 		return rzRecord
 	end
@@ -36,7 +36,7 @@ class RzRecord < ApplicationRecord
 		end
 		
 		if rzRecord.startTime.present?
-			rzRecord.finishTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S')
+			rzRecord.finishTime = Time.strptime(time, '%d/%m/%Y %H:%M:%S:%L')
 			
 			rzRecord.rz_time = Time.at(rzRecord.finishTime - rzRecord.startTime).utc
 			rzRecord.getRzTimeString
@@ -51,7 +51,7 @@ class RzRecord < ApplicationRecord
 	
 	def getRzTimeString
 		if !self.rzTimeString.present?
-			self.rzTimeString = Time.at(self.finishTime - self.startTime).utc.strftime("%H:%M:%S")
+			self.rzTimeString = Time.at(self.finishTime - self.startTime).utc.strftime("%H:%M:%S:%L")
 		end
 			
 		return rzTimeString

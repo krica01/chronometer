@@ -20,7 +20,10 @@ class ResultsController < ApplicationController
   	def live_races
   		@races = []
   		if Race.find_by(:user_id => session[:user_id]) != nil
-  			@races << Race.find_by(:user_id => session[:user_id])
+  			ra = Race.where(:user_id => session[:user_id])
+  			ra.each do |race|
+  				@races << race
+  			end
   		end
   		if !Race.getContributingRaces(session[:user_id]).nil?
   			@races = @races | Race.getContributingRaces(session[:user_id])

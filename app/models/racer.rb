@@ -56,19 +56,31 @@ class Racer < ApplicationRecord
 
 
 		total = 0
+		totalms = 0
+		
 		array.sum do |s|
 			
-  			puts s
-  			h, m, s = s.split(':').map(&:to_i)
+  			h, m, s, l = s.split(':').map(&:to_i)
   			total = total + 60*60*h + 60*m + s
+  			if !l.nil?
+  				totalms = totalms + l
+  			end
+  			if totalms > 999
+  				total = total + 1
+  				totalms = totalms - 1000
+  			end
+
 		end
 		
 		
 
 		
-
+		puts 'getRaceTimeSort'
 		puts total
-		return Time.at(total).utc.strftime("%H:%M:%S") 
+		
+		totalTime = Time.at(total).utc.strftime("%H:%M:%S") 
+		
+		return totalTime + ':' + totalms.to_s 
 	
 	end
 	
@@ -101,7 +113,7 @@ class Racer < ApplicationRecord
 		
 		array = []
 		
-		
+
 		self.rz_records.each do |rzRecord|
 			puts 'rzRecord.rzTimeaa: ' + rzRecord.rzTimeString.to_s
 			
@@ -110,16 +122,26 @@ class Racer < ApplicationRecord
 		end
 		
 		total = 0
+		totalms = 0
 		
 		array.sum do |s|
 			
 
-  			h, m, s = s.split(':').map(&:to_i)
+  			h, m, s, l = s.split(':').map(&:to_i)
   			total = total + 60*60*h + 60*m + s
+  			if !l.nil?
+  				totalms = totalms + l
+
+
+  			end
+
+
 		end
 		
+
+		totalTime = Time.at(total).utc.strftime("%H:%M:%S") 
 		
-		self.race_time_string = Time.at(total).utc.strftime("%H:%M:%S") 
+		self.race_time_string = totalTime + ':' + totalms.to_s.rjust(3,'0') 
 		
 		self.save
 	end
