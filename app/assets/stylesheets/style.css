@@ -365,3 +365,20 @@ a.link {
 	display: block;
 	float: left;
 }
+div.note {
+	font-weight: normal;
+	font-size: 0.8em;
+	padding-left: 1em;
+	margin-bottom: 1em;
+}
+div.padded {
+	padding-left: 1em;
+}
+
+ul.share {
+	padding-inline-start: 0px;
+}
+
+ul.share li {
+	margin-bottom: 0.8em;
+}

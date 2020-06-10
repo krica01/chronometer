@@ -2,24 +2,43 @@
 
 <%= render 'form_edit', race: @race %>
 
+<br />
 
-<h2>Contributors</h2>
-<ul>
-<% @race.race_permissions.each do |race_permission| %>
-	<li>
-		<%= race_permission.user.name %> - <%= race_permission.user.email %> 
-		<%= link_to "remove" , delete_race_permission_path(:race_permission_id => race_permission.id), :class => "submit btn"  %>
-		-----------------
-	</li>
-<% end %>
-</ul>
 
-<p>
+<h2>Assign racers name</h2>
+<div class="padded">
+	<p><%= link_to 'Racers names',   assign_names_path(@race), :class => "link" %></p>
+</div>
+
+<br />
+<br />
+
+
+<h2>Share race</h2>
+<div class="padded">
+	<ul class="share">
+	<% @race.race_permissions.each do |race_permission| %>
+		<li>
+			<%= race_permission.user.name %> - <%= race_permission.user.email %> 
+			<%= link_to "remove" , delete_race_permission_path(:race_permission_id => race_permission.id), :class => "submit btn"  %>
+		</li>
+	<% end %>
+	</ul>
+
+</div>
+
+
+<div class="note">To share race add email of an existing Chronometer user</div>
+<div class="padded">
+	
 	<%= form_tag(assign_race_permission_path(@race), method: 'post' ) do %>
 		<%= label_tag 'Email' %>
 		<%= text_field_tag :user_email %>
-		<input type="submit" value="OK" />
+		<input type="submit" value="Add" />
 	<% end %>
-</p>
-<%= link_to 'Show', @race %> |
-<%= link_to 'Back', races_path %>
+</div>
+
+<br />
+
+
+<%= link_to 'Back', races_path, :class => "submit btn" %>
