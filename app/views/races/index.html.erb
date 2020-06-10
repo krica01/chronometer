@@ -13,9 +13,9 @@
   <tbody>
     <% @races.each do |race| %>
       <tr>
-        <td><%= race.name %></td>
+        <td class="right-2em"><%= race.name %></td>
 
-        <td><%= link_to 'Edit', edit_race_path(race), :class => "link" %></td>
+        <td class="edit-padded"><%= link_to 'Edit', edit_race_path(race), :class => "link edit" %></td>
         <td><%= link_to 'Del', race, method: :delete, data: { confirm: 'Are you sure?' }, :class => "link" %></td>
       </tr>
     <% end %>

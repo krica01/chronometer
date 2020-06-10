@@ -368,8 +368,8 @@ a.link {
 div.note {
 	font-weight: normal;
 	font-size: 0.8em;
-	padding-left: 1em;
-	margin-bottom: 1em;
+
+
 }
 div.padded {
 	padding-left: 1em;
@@ -381,4 +381,10 @@ ul.share {
 
 ul.share li {
 	margin-bottom: 0.8em;
+}
+td.right-2em {
+	padding-right: 2em;
+}
+a.edit {
+	padding: 0.2em 1em 0.2em 1em;
 }

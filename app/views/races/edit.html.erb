@@ -17,6 +17,12 @@
 <h2>Share race</h2>
 <div class="padded">
 	<ul class="share">
+	<% if @race.race_permissions.size == 0 %>
+		<li>
+		Race is not shared yet
+		</li>
+		<div class="note">To share race add email of an existing Chronometer user.</div>
+	<% end %>
 	<% @race.race_permissions.each do |race_permission| %>
 		<li>
 			<%= race_permission.user.name %> - <%= race_permission.user.email %> 
@@ -28,8 +34,8 @@
 </div>
 
 
-<div class="note">To share race add email of an existing Chronometer user</div>
-<div class="padded">
+
+<div class="padded note">
 	
 	<%= form_tag(assign_race_permission_path(@race), method: 'post' ) do %>
 		<%= label_tag 'Email' %>
