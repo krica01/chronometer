@@ -16,28 +16,38 @@
 				<div class="header">
 				  <i class="material-icons"  onClick="$('#left-menu').slideToggle()">menu</i>
 				  <h1><a href="/chronometer/homepage">Chronometer</a></h1>
-				  <i class="material-icons">add</i>
+				  <i class="material-icons"   onClick="$('#logout-menu').slideToggle()">add</i>
 			
 				   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 					   rel="stylesheet" >
 				   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 					   rel="stylesheet" >
 				</div>
+				<% if logged_in? %>
 				<div id="left-menu">
-					<% if logged_in? %>
+					
 						<ul>
 							<a href="/races/start-races"><li>Start races</li></a>
 							<a href="/races/finish-races"><li>Finish races</li></a>
 							<a href="/results/list-races"><li>Results</li></a>
 							<a href="/results/live-races"><li>Live results</li></a>
 							<a href="/races"><li>Manage races</li></a>
+						</ul>
+					
+
+				</div>
+				<% end %>
+				<div id="logout-menu">
+					<% if logged_in? %>
 						<ul>
+							<a href="/logout">Logout</a>
+						</ul>
 					<% else %>
 						<ul>
-							<a href="/signup"><li>Signup</li></a>
+							<a href="/signup">Create account</a>
 						</ul>
-					<% end %>
-				</div>	
+					<% end %>	
+				</div>
 			</div>	
 			<div id="main-content">
 				<%= yield %>
