@@ -147,9 +147,24 @@ li {
 	width: 100%;
 	background-color: gray;
 	display: none;
+	margin-top: 10em;
+	padding: 1em;
 }
 
 #left-menu ul li {
+	margin-bottom: 16px;
+	border: solid 1px #eee;
+	padding: 10px 15px 10px 15px;
+	text-align: center;
+
+}
+
+#logout-menu ul {
+	padding: 0px 0px 0px 0px;
+
+}
+
+#logout-menu ul li {
 	margin-bottom: 16px;
 	border: solid 1px #eee;
 	padding: 10px 15px 10px 15px;
@@ -394,4 +409,7 @@ td.right-2em {
 }
 a.edit {
 	padding: 0.2em 1em 0.2em 1em;
+}
+a.save {
+	background-color: green;
 }
