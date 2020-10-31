@@ -4,7 +4,11 @@
 	<% @race.rzs.each do |rz| %>
 			<h2><%= rz.name %></h2>
 				<div>
+					<% if rz.getSortedRzRecords.size == 0 %>
+							<div class="del-rz">No results <%= link_to 'delete empty RZ ?', {:controller => :races, :action => :delete_rz, :rz_id => rz.id, :id => @race.id }, data: { confirm: 'Delete RZ?' }, :class => 'delete-rz' %></div>	
+					<% end %>
 					<table class="result-table">
+						
 						<% 
 							@c = 1
 							rz.getSortedRzRecords.each do |rzRecord| %>

@@ -103,6 +103,8 @@ class Racer < ApplicationRecord
 
 
 	def calculateRaceTime(rzCount)
+		puts 'calculateRaceTime'
+		puts rzCount
 		rzRecordsCount = RzRecord.where(:racer_id => self.id).where.not(:rz_time => nil).count
 		
 

@@ -35,7 +35,6 @@ class ResultsController < ApplicationController
 	#results/live/:id
 	def live_results
 		@race = Race.find_by(:id => params[:id])
-
 	
 		render action: "liveresults.html.erb"
 	end

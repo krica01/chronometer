@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 	get 'races/:id/show-rzs-finish' => 'races#show_rzs_finish'
 	get 'races/:id/start-rz/:rzid' => 'races#start_rz'
 	
+	get 'races/delete_rz/:id/:rz_id' => 'races#delete_rz'
+	
 	get 'races/:id/finish-rz/:rzid' => 'races#finish_rz'
 
 	get 'results/show/:id' => 'results#show_results'

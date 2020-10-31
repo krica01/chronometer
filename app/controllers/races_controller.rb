@@ -219,6 +219,25 @@ class RacesController < ApplicationController
 
   end
   
+  # Delete RZ /races/delete_rz/:id/:rz_id
+  def delete_rz
+  	@race = Race.find(params[:id])
+  	
+  	rz = @race.rzs.find(params[:rz_id])
+	if !rz.nil?
+		rz_records = RzRecord.where(:rz_id => rz.id)
+		rz_records.each do |rz_record|
+			rz_record.destroy
+		end
+
+		rz.destroy
+	end
+	
+
+	
+	redirect_to :controller => 'results', :action => 'show_results', :id => @race.id
+  end
+  
   
   def delete_race_permission
   	@race_permission = RacePermission.find(params[:race_permission_id])
