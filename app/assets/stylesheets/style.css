@@ -271,11 +271,14 @@ a.submit {
 }
 
 .content.hello {
-	margin-top: 270px;
+	margin-top: 15em;
 }
 .content.hello h1.hello {
-	font-size: 80px;
+	font-size: 7em;
 	cursor: pointer;
+}
+.content.hello .enter-link {
+	font-size: 3em;
 }
 
 #login {
