@@ -39,7 +39,9 @@
 				<% end %>
 				<div id="logout-menu">
 					<% if logged_in? %>
+						<div class="user-name"><%= session[:email] %></div>
 						<ul>
+
 							<a href="/logout"><li>Logout</li></a>
 						</ul>
 					<% else %>

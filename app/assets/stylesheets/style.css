@@ -389,6 +389,7 @@ a.link {
 	width: 120px;
 	display: block;
 	float: left;
+	font-size: 0.8em;
 }
 div.note {
 	font-weight: normal;
@@ -421,4 +422,13 @@ a.save {
 }
 .del-rz a.delete-rz {
 	color: #f5ad42;
+}
+.orange {
+	color: #f5ad42;
+	font-weight: normal;
+}
+.user-name {
+	text-align: center;
+	margin-bottom: 2em;
+	margin-top: 2em;
 }

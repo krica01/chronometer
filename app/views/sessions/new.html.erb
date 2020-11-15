@@ -15,6 +15,10 @@
       	<br />
       	<a class="submit btn" onClick="$('form').submit()">LOGIN</a>
       </p>
+      <p>
+      	<br />
+      	<%= link_to "Create account", {:controller => :users, :action => :new}, :class => "orange" %>
+      </p>
     <% end %>
 
   </div>
