@@ -275,6 +275,7 @@ a.submit {
 }
 #hello-content {
 	font-size: 3em;
+  font-weight: bold;
   width: 100%;
   text-align: center;
   top: 30%;
