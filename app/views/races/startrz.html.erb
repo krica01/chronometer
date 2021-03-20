@@ -2,19 +2,20 @@
 
 <ul class="list">
 	<% @race.racers.each do |racer| %>
-		
+
 		<% if Rz.isRacerStarted(@rz.id, racer.id) %>
 			<li><%= racer.name %> STARTED</li>
-		
+
 		<% else %>
-			<li id="racerStart<%= racer.id %>" onClick="$('#start<%= racer.id %>').slideToggle()"><%= racer.name %></li>
-		
+			<li id="racerStart<%= racer.id %>" onClick="$('#start<%= racer.id %>').slideToggle()"><%= racer.name %>
+				<%= print_nickname_dash(racer) %></li>
+
 			<li id="start<%= racer.id %>" class="start-form">
-				<div class="timer" id="startTimer<%= racer.id %>"> 
+				<div class="timer" id="startTimer<%= racer.id %>">
 
 				</div>
 				<div>
-		
+
 				<a class="startBtn" onClick="
 				var startTime = $('#startTimer<%= racer.id %>').text();
 				$.ajax({
@@ -33,4 +34,3 @@
 </ul>
 
 <a href="/races/<%= @race.id %>/show-rzs" class="backBtn">BACK</a>
-
