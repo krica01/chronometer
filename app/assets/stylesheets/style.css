@@ -2,60 +2,60 @@ html,body {
   box-sizing: border-box;
 }
 *, *:before, *:after { box-sizing: inherit; }
- 
+
 /* Set full height: http://stackoverflow.com/questions/6654958/make-body-have-100-of-the-browser-height */
 html {
   /* body will set it's height based on its parent, which is html */
   height: 100%;
- 
+
   /* set full width as well */
   width: 100%;
 }
 body {
   /* min-height is needed for pages that might scroll, ie they may contain _more_ than 100% of viewport height */
   min-height: 100%;
- 
+
   /* needed to prevent unwanted scroll-bars */
   margin: 0;
   padding: 0;
-  
+
   /* This is just so we can tell the body block apart from the app container */
   background-color: gray;
 }
 
 body {
 
-	color: #eee;	
+	color: #eee;
 
 	font-family: "Arial Black", Gadget, sans-serif;
 }
 
 #app-container {
- 
+
   /* Set block height using the viewport height unit, and force it to be full height, even if the containing content does not require it */
   min-height: 100vh;
- 
+
   /* center this block for larger viewports */
   margin: 0 auto;
- 
+
   /*Use max-width for better browser handling of small windows
   http://www.w3schools.com/css/css_max-width.asp
   */
   max-width: 31.25em;
- 
-  /* Use min-width to prevent your design from being scrunched up in tiny viewports (and instead be replaced with horizontal scroll bars) 
+
+  /* Use min-width to prevent your design from being scrunched up in tiny viewports (and instead be replaced with horizontal scroll bars)
   */
   min-width: 18.75em;
-   
+
   /* Add padding around your content - this is just an arbitrary number */
   padding: 1em;
- 
- 
+
+
   /* Add sufficient top padding so the fixed header doesn't cover up main content by defailt.  This value should be a calculated value (eg using calc(), sass, etc):
-  padding for this container + height of app header; Here, that is 1em + 4em */ 
+  padding for this container + height of app header; Here, that is 1em + 4em */
   padding-top: 3em;
   /* just used to so we can tell the content block apart from the body block */
-  
+
 }
 
 #app-header {
@@ -68,16 +68,16 @@ body {
    background-color: gray;
   /* this should match the min-width in app-container. Recommend setting using a common variable (eg with Sass) */
   min-width: 300px;
- 
+
   /* just arbitrary values */
   height: 4em;
   padding: 0em;
- 
+
   /* internal layout, centered vertically - flex layout is great for this */
   display: flex;
   flex-flow: row nowrap;
   align-items:center;
- 
+
 }
 
 #app-header .header {
@@ -90,21 +90,21 @@ body {
    background-color: gray;
   /* this should match the min-width in app-container. Recommend setting using a common variable (eg with Sass) */
   min-width: 300px;
- 
+
   /* just arbitrary values */
   height: 4em;
   padding: 1em;
- 
+
   /* internal layout, centered vertically - flex layout is great for this */
   display: flex;
   flex-flow: row nowrap;
   align-items:center;
 }
- 
+
 #app-header h1 {
   /* set the h1 block as the main flex block - it will fill all unused space in the block */
   flex: 1;
- 
+
   /* center content inside the block */
   text-align: center;
 }
@@ -134,7 +134,7 @@ li {
 	background-color: gray;
 	margin-top: 23em;
 	padding: 1em;
-	
+
 }
 
 #left-menu ul {
@@ -181,7 +181,7 @@ li {
 	background-color: #eff0f2;
 	color: #31343a;
 	margin: 0px 0px 14px 0px;
-	
+
 }
 
 a {
@@ -219,7 +219,7 @@ ul.list li {
 	padding: 20px 25px 20px 25px;
 	border: solid 1px #eff0f2;
 	margin-bottom: 14px;
-	
+
 }
 
 ul.list a {
@@ -233,7 +233,7 @@ ul.list a {
 }
 
 .start-form .timer {
-	
+
 }
 
 .start-form .startBtn {
@@ -255,7 +255,7 @@ a.backBtn {
 	width: 100px;
 	font-size: 80%;
 	margin-top: 1em;
-	
+
 }
 
 a.btn {
@@ -263,22 +263,31 @@ a.btn {
 	padding: 6px 15px 6px 15px;
 	border: solid 1px #eff0f2;
 	font-size: 80%;
-	
+
 }
 
 a.submit {
 	width: 120px;
 }
 
-.content.hello {
-	margin-top: 35em;
+#hello-content h1 {
+	font-size: 2em;
 }
-.content.hello h1.hello {
-	font-size: 7em;
-	cursor: pointer;
-}
-.content.hello .enter-link {
+#hello-content {
 	font-size: 3em;
+  width: 100%;
+  text-align: center;
+  top: 30%;
+  position: absolute;
+}
+
+#hello-content a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#hello-content a:visited {
+	color: #fff;
 }
 
 #login {
@@ -326,7 +335,7 @@ i.material-icons.record {
 	left: 0px;
 	background-color: gray;
 	bottom: 0em;
-	
+
 }
 
 .time-bar {
@@ -352,7 +361,7 @@ i.material-icons.record {
 	padding: 1em;
 	margin-bottom: 1em;
 	padding: 1em;
-	
+
 }
 
 #finish-list select {
@@ -369,13 +378,13 @@ i.material-icons.finishBtn {
 	position: relative;
 	right: -0.6em;
 	bottom: -10px;
-} 
+}
 i.material-icons.clear {
 	font-size: 3em;
 	position: relative;
 	right: -1em;
 	bottom: -10px;
-}	
+}
 
 a.link {
     display: block;

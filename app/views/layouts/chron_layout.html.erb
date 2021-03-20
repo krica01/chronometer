@@ -14,10 +14,13 @@
 		<div id ="app-container">
 			<div id="app-header">
 				<div class="header">
-				  <i class="material-icons"  onClick="$('#left-menu').slideToggle()">menu</i>
+					<% if logged_in? %>
+						<i class="material-icons"  onClick="$('#left-menu').slideToggle()">menu</i>
+					<% end %>
 				  <h1><a href="/chronometer/homepage">Chronometer</a></h1>
-				  <i class="material-icons"   onClick="$('#logout-menu').slideToggle()">add</i>
-			
+					<% if logged_in? %>
+						<i class="material-icons"   onClick="$('#logout-menu').slideToggle()">add</i>
+					<% end %>
 				   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 					   rel="stylesheet" >
 				   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -25,7 +28,6 @@
 				</div>
 				<% if logged_in? %>
 				<div id="left-menu">
-					
 						<ul>
 							<a href="/races/start-races"><li>Start races</li></a>
 							<a href="/races/finish-races"><li>Finish races</li></a>
@@ -33,8 +35,6 @@
 							<a href="/results/live-races"><li>Live results</li></a>
 							<a href="/races"><li>Manage races</li></a>
 						</ul>
-					
-
 				</div>
 				<% end %>
 				<div id="logout-menu">
@@ -44,13 +44,9 @@
 
 							<a href="/logout"><li>Logout</li></a>
 						</ul>
-					<% else %>
-						<ul>
-							<a href="/signup"><li>Create account</li></a>
-						</ul>
-					<% end %>	
+					<% end %>
 				</div>
-			</div>	
+			</div>
 			<div id="main-content">
 				<%= yield %>
 			</div>
