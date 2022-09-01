@@ -1,5 +1,15 @@
+<h1>Hot seat</h1>
+<% @rz.getSortedRzRecords.first(1).each do |rzRecord| %>
+		<table class="hot-seat result-table">
+			<tr>
+				<td class="name"><%= rzRecord.racer.display_name %></td>
+				<td><%= rzRecord.rzTime %></td>
+			</tr>
+		</table>
+<% end %>
+<h2>Riders</h2>
 <% @c= 1 %>
-	<% @rz.getLiveRzRecords.first(10).each do |rzRecord| %>
+	<% @rz.getLiveRzRecords.first(5).each do |rzRecord| %>
 				<div>
 					<table class="result-table">
 							<tr>
@@ -10,5 +20,5 @@
 					</table>
 				</div>
 
-		
+
 	<% end %>

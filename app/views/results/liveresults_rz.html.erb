@@ -10,13 +10,11 @@ function refresh() {
 				$.ajax({
 			type: 'GET',
 			url: '/results/refresh-live-results/<%= @rz.id %>'
-		
+
 		 });
 }
 
 window.setInterval(function(){
   refresh()
-}, 3000);
+}, 2000);
 </script>
-
-<a href="/results/live/<%= @rz.race.id %>" class="backBtn">BACK</a>

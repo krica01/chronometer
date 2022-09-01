@@ -442,3 +442,17 @@ a.save {
 	margin-bottom: 2em;
 	margin-top: 2em;
 }
+
+#live-res h1 {
+  font-size: 3em;
+  margin-bottom: 0em;
+}
+#live-res .hot-seat {
+  font-size: 1.5em;
+}
+#live-res td {
+  padding: 0;
+}
+#live-res td.name {
+  padding-right: 3em;
+}
