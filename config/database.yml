@@ -22,6 +22,6 @@ test:
 
 production:
   <<: *default
-  database: kt7gn9ymlj6rgi9f
-  username: sjssw1g26ot5tc0i
-  password: lxgmrxbtnabm6i5f
+  database: chrono_db
+  username: chrono_db_user
+  password: TCBLj8r6GdByLCsTAbNY62geCX9F4Lrp
