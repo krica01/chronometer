@@ -22,6 +22,7 @@ test:
 
 production:
   <<: *default
+  adapter: postgresql
   database: chrono_db
   username: chrono_db_user
   password: TCBLj8r6GdByLCsTAbNY62geCX9F4Lrp
