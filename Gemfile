@@ -12,7 +12,7 @@ group :development, :test do # <<<< :development, not devlopment
   gem 'sqlite3', '~> 1.3.6'
 end
 
-rake
+gem 'rake'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
