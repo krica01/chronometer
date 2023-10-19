@@ -1,19 +1,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.7.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
-group :production do
-  gem 'pg'
-end
-group :development, :test do # <<<< :development, not devlopment
-  gem 'sqlite3', '~> 1.3.6'
-end
+  gem 'sqlite3', '~> 1.6.3'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+#gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

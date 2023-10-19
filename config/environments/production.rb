@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.secret_key_base = "f9ad8e923dc27922e0963179185ae2300d8472e68cfcc0d9d7ed3cd5516eb47dddd51ca87ea03a8a9cc9528bd39b20e9caeecfeddf68a0c4f3c46b083a930ec5"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -20,7 +21,13 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  #config.public_file_server.enabled = true ENV['RAILS_SERVE_STATIC_FILES'].present?
+  
+    # Rails 4:
+config.serve_static_assets = true
+
+# Or for Rails 5:
+config.public_file_server.enabled = true
   
   if ENV["RAILS_LOG_TO_STDOUT"].present?
   logger           = ActiveSupport::Logger.new(STDOUT)
