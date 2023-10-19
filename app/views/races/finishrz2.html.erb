@@ -1,0 +1,44 @@
+<h1 class="finish">Finish <%= @race.name %> - <%= @rz.name %></h1>
+
+<div class="time-bar">
+	<div class="timer finish" id="finishTime">
+	</div>
+</div>
+<div id="f-list">
+	<ul id="finish-list">
+	</ul>
+</div>
+<div>
+	<ul id="users">
+		<% @race.racers.each do |racer| %>
+			<li value="<%= racer.id %>"></li>
+		<% end %>
+	</ul>
+</div>
+<div class="record-bar">
+	<i class="material-icons record" onClick="
+
+			var startTime = $('#finishTime').text();
+			if(startTime.length > 2) {
+				var racerId = 1;
+						$('#time-stop1').text(startTime);
+						$('#time-stop1').show();
+						$('#finish-list').append('<li><span class=\'startTimeLi\'>'+ startTime +
+												'</span><br /><select name=\'racerId\' >' +
+												<% @race.racers.each do |racer| %>
+													<% if !Rz.isRacerFinished(@rz.id, racer.id) %>
+													'<option value=\'<%= racer.id %>\'><%= racer.name %></option>' +
+													<% end %>
+												<% end %>
+
+												'</select>' +
+												'<i class=\'material-icons finishBtn\' onClick=\'sendFinishTime($(this).parent(), <%= @race.id %>, <%= @rz.id %>)\'>check_box</i>' +
+												'<i class=\'material-icons clear\' onClick=\'$(this).parent().remove()\'>clear</i>' +
+
+												'</li>');
+			}
+
+
+	">radio_button_checked</i>
+	<i class="material-icons save_alt" onClick="resendTimes(<%= @race.id %>, <%= @rz.id %>)">save</i>
+</div>

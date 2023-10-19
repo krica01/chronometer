@@ -27,10 +27,10 @@ class RacesController < ApplicationController
   # POST /races
   # POST /races.json
   def create
-    
+
     @race = Race.new(race_params)
 	@race.user_id = session[:user_id]
-	
+
 	num = params[:no_racers].to_i
 
 	i = 0
@@ -42,22 +42,22 @@ class RacesController < ApplicationController
    		@racer.race = @race
 		@race.racers << @racer
    		i +=1
-   		
+
 	end
-	
-	
+
+
 	num = params[:no_rzs].to_i
-	
+
 	i = 1
 	#$num = 5
-	
+
 	(1..num).each do |i|
 		puts "RZ - " + i.to_s
   		@rz = Rz.new(:name => "RZ"+i.to_s)
 		@race.rzs << @rz
    		i +=1
 	end
-	
+
 	@race.rzs.each do |rz|
 		puts 'rzrecord RZ' + rz.id.to_s
 		@race.racers.each do |racer|
@@ -69,8 +69,8 @@ class RacesController < ApplicationController
 			rz.rz_records << rzRecord
 			racer.rz_records << rzRecord
 		end
-	end 
-		
+	end
+
 
     respond_to do |format|
       if @race.save
@@ -107,15 +107,15 @@ class RacesController < ApplicationController
     end
   end
 
-  
+
   # SHOW race RZ /race/1/show-rzs
   def show_rzs
   	@race = Race.find_by(:id => params[:id])
-  	
+
     render action: "showrzs.html.erb"
-  
+
   end
-  
+
   # SHOW race RZ /race/1/start-rz/1
   def start_rz
   	@race = Race.find_by(:id => params[:id])
@@ -123,7 +123,7 @@ class RacesController < ApplicationController
 
     render action: "startrz.html.erb"
   end
-  
+
     # SHOW start races list
     #races/start-races
   def start_races
@@ -136,22 +136,22 @@ class RacesController < ApplicationController
   	end
   	if !Race.getContributingRaces(session[:user_id]).nil?
   		@races = @races | Race.getContributingRaces(session[:user_id])
-  	end	
+  	end
 
     render action: "startraces.html.erb"
   end
-  
-  
-  
+
+
+
   # SHOW race RZ /race/1/show-rzs
   def show_rzs_finish
   	@race = Race.find_by(:id => params[:id])
-  	
+
     render action: "showrzs_finish.html.erb"
-  
+
   end
-  
-  
+
+
   # SHOW race RZ /race/1/start-rz/1
   def finish_rz
   	@race = Race.find_by(:id => params[:id])
@@ -159,7 +159,15 @@ class RacesController < ApplicationController
 
     render action: "finishrz.html.erb"
   end
-  
+
+  # SHOW race RZ /race/1/start-rz/1
+  def finish_rz2
+  	@race = Race.find_by(:id => params[:id])
+  	@rz = Rz.find_by(:id => params[:rzid], :race_id => params[:id])
+
+    render action: "finishrz2.html.erb"
+  end
+
     # SHOW start races list
     #races/start-races
   def finish_races
@@ -173,56 +181,56 @@ class RacesController < ApplicationController
   	if !Race.getContributingRaces(session[:user_id]).nil?
   		@races = @races | Race.getContributingRaces(session[:user_id])
   	end
-  	
+
     render action: "finishraces.html.erb"
   end
-  
+
   # SHOW assign_names
   def assign_names
   	@race = Race.find_by(:id => params[:id])
-  	
+
   	render action: "assign_names.html.erb"
   end
-  
+
   # PUT assign_name
   def assign_name
   	@racer = Racer.find_by(:id => params[:id])
-  	
+
   	@racer.nickname = params[:nickname]
-  	
+
   	@racer.save
   	 respond_to do |format|
         format.js {render action: "edit_name.html.erb"}
     end
-  	
+
 
   end
-  
+
   # PUT assign_name
   def assign_race_permission
   	@race = Race.find_by(:id => params[:id])
-  	
+
   	user = User.find_by(:email => params[:user_email])
-  	
+
   	@race_permission = RacePermission.new()
   	@race_permission.race = @race
   	@race_permission.user = user
 	puts 'AAAA'
-	puts @race_permission.user_id 
-	puts @race_permission.race_id 
-  	
+	puts @race_permission.user_id
+	puts @race_permission.race_id
+
   	@race_permission.save
-  	
-  	puts @race_permission 
+
+  	puts @race_permission
 
 	redirect_to :action => :edit
 
   end
-  
+
   # Delete RZ /races/delete_rz/:id/:rz_id
   def delete_rz
   	@race = Race.find(params[:id])
-  	
+
   	rz = @race.rzs.find(params[:rz_id])
 	if !rz.nil?
 		rz_records = RzRecord.where(:rz_id => rz.id)
@@ -232,21 +240,21 @@ class RacesController < ApplicationController
 
 		rz.destroy
 	end
-	
 
-	
+
+
 	redirect_to :controller => 'results', :action => 'show_results', :id => @race.id
   end
-  
-  
+
+
   def delete_race_permission
   	@race_permission = RacePermission.find(params[:race_permission_id])
   	@race = Race.find(params[:id])
-  	
+
   	@race_permission.destroy
-  	
+
   	redirect_to :action => :edit
-  	
+
   end
 
   private
@@ -259,6 +267,6 @@ class RacesController < ApplicationController
     def race_params
       params.require(:race).permit(:name, :place, :date)
     end
-    
-    
+
+
 end
