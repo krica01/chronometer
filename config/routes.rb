@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 	get 'races/:id/finish-rzs' => 'races#finish_rzs'
 	get 'races/:id/show-rzs-finish' => 'races#show_rzs_finish'
 	get 'races/:id/start-rz/:rzid' => 'races#start_rz'
+	get 'races/:id/start-rz2/:rzid' => 'races#start_rz2'
 
 	get 'races/delete_rz/:id/:rz_id' => 'races#delete_rz'
 

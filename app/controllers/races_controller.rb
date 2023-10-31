@@ -124,6 +124,13 @@ class RacesController < ApplicationController
     render action: "startrz.html.erb"
   end
 
+  def start_rz2
+  	@race = Race.find_by(:id => params[:id])
+  	@rz = Rz.find_by(:id => params[:rzid], :race_id => params[:id])
+
+    render action: "startrz2.html.erb"
+  end
+
     # SHOW start races list
     #races/start-races
   def start_races

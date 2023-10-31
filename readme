@@ -1,0 +1,5 @@
+root         995       1  0 Aug23 ?        00:02:16 /usr/bin/ruby2.7 bin/rails server -p 80 -e production -d
+rails_server -d
+sudo rails server -p 80 -e production
+
+sudo rails assets:precompile

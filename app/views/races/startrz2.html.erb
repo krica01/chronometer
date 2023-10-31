@@ -1,0 +1,43 @@
+<h1>Start <%= @race.name %> - <%= @rz.name %></h1>
+
+<ul class="list">
+	<% @race.racers.each do |racer| %>
+
+		<% if Rz.isRacerStarted(@rz.id, racer.id) %>
+			<li><%= racer.name %> STARTED</li>
+
+		<% else %>
+			<li id="racerStart<%= racer.id %>" onClick="$('#start<%= racer.id %>').slideToggle()" value="<%= racer.id %>"><%= racer.name %>
+				<%= print_nickname_dash(racer) %></li>
+
+			<li id="start<%= racer.id %>" class="start-form">
+				<div class="timer" id="startTimer<%= racer.id %>">
+
+				</div>
+				<div>
+
+				<a class="startBtn" onClick="
+				var startTime = $('#startTimer<%= racer.id %>').text();
+				$.ajax({
+			type: 'GET',
+			url: '<%= start_racer_url(:raceId => @race.id, :rzId => @rz.id, :racerId => racer.id) %>',
+			data: {startTime:  startTime},
+			success:    function(response, status) {
+						$('#racerStart<%= racer.id %>').text('<%= racer.name %> STARTED');
+						$('#start<%= racer.id %>').remove();
+			},
+			error: function(xhr, status, error) {
+	        localStorage.setItem('start-time' + <%= racer.id %>, startTime);
+					$('#racerStart<%= racer.id %>').text('<%= racer.name %> STARTED');
+					$('#start<%= racer.id %>').remove();
+	    }
+		 });"><%= racer.name %> START</a>
+				</div>
+			</li>
+		<% end %>
+	<% end %>
+</ul>
+<div>
+	<i class="material-icons save_alt save_start" onClick="resendStartTimes(<%= @race.id %>, <%= @rz.id %>)">save</i>
+</div>
+<a href="/races/<%= @race.id %>/show-rzs" class="backBtn">BACK</a>

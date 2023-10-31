@@ -4,7 +4,7 @@ class Racer < ApplicationRecord
 
   default_scope { order(id: :asc) }
 
-	
+
 	def getRzRecord(ids)
 		self.rz_records.each do |rzrecord|
 			if rzrecord.rz_id == ids && rzrecord.racer_id == self.id
@@ -12,7 +12,7 @@ class Racer < ApplicationRecord
 			end
 		end
 	end
-	
+
 	def getRzRecordTime(id)
 		rzrecord = getRzRecord(id)
 		if rzrecord.present?
@@ -20,46 +20,46 @@ class Racer < ApplicationRecord
 		else
 			return ""
 		end
-		
+
 	end
-	
+
 	def getRaceTimeSort
 
 		array = []
-		
+
 		puts "RZS - userId" + self.id.to_s
 		self.race.rzs.each do |rz|
 			puts "display in results"
 			puts rz.displayInResults
 			if rz.displayInResults
 				puts "RZ ID - " + rz.id.to_s
-				
-				rzRecord = self.getRzRecord(rz.id)			
+
+				rzRecord = self.getRzRecord(rz.id)
 
 				puts rzRecord
-				
+
 				if !rzRecord.present? || !rzRecord.startTime.present?
 					totalTime = "DNS"
-					return totalTime 
+					return totalTime
 				end
-				
+
 				if !rzRecord.finishTime.present?
 					totalTime = "DNF"
-					return totalTime 
+					return totalTime
 				end
 
 				array << getRzRecordTime(rz.id)
-			end	
-				
-							
+			end
+
+
 		end
 
 
 		total = 0
 		totalms = 0
-		
+
 		array.sum do |s|
-			
+
   			h, m, s, l = s.split(':').map(&:to_i)
   			total = total + 60*60*h + 60*m + s
   			if !l.nil?
@@ -71,19 +71,19 @@ class Racer < ApplicationRecord
   			end
 
 		end
-		
-		
 
-		
+
+
+
 		puts 'getRaceTimeSort'
 		puts total
-		
-		totalTime = Time.at(total).utc.strftime("%H:%M:%S") 
-		
-		return totalTime + ':' + totalms.to_s 
-	
+
+		totalTime = Time.at(total).utc.strftime("%H:%M:%S")
+
+		return totalTime + ':' + totalms.to_s
+
 	end
-	
+
 	def display_name
 		display = name
 		if nickname.to_s.size > 0
@@ -91,13 +91,13 @@ class Racer < ApplicationRecord
 		end
 		return display
 	end
-	
+
 	def getRaceTime
-		time = self.getRaceTimeSort 
+		time = self.getRaceTimeSort
 		if time == "DNF" || time == "DNS"
 			#return "-"
 		end
-	
+
 		return time
 	end
 
@@ -106,28 +106,28 @@ class Racer < ApplicationRecord
 		puts 'calculateRaceTime'
 		puts rzCount
 		rzRecordsCount = RzRecord.where(:racer_id => self.id).where.not(:rz_time => nil).count
-		
+
 
 		if rzRecordsCount < rzCount
 			puts 'not finished all'
 			return nil
-		end 
-		
+		end
+
 		array = []
-		
+
 
 		self.rz_records.each do |rzRecord|
 			puts 'rzRecord.rzTimeaa: ' + rzRecord.rzTimeString.to_s
-			
+
 			array << rzRecord.rzTimeString
-			
+
 		end
-		
+
 		total = 0
 		totalms = 0
-		
+
 		array.sum do |s|
-			
+
 
   			h, m, s, l = s.split(':').map(&:to_i)
   			total = total + 60*60*h + 60*m + s
@@ -139,13 +139,18 @@ class Racer < ApplicationRecord
 
 
 		end
-		
 
-		totalTime = Time.at(total).utc.strftime("%H:%M:%S") 
-		
-		self.race_time_string = totalTime + ':' + totalms.to_s.rjust(3,'0') 
-		
+
+		totalTime = Time.at(total).utc.strftime("%H:%M:%S")
+
+		self.race_time_string = totalTime + ':' + totalms.to_s.rjust(3,'0')
+
 		self.save
 	end
-	
+
+	def inError
+		puts 'DDDD'+ 'racer id '+ String(self.id) + ' ' + String(self.error_cd)
+		return self.error_cd != nil && self.error_cd != 0
+	end
+
 end

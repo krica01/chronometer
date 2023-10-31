@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 
-setInterval(function(){ changeDate() }, 1000);
+setInterval(function(){ changeDate() }, 70);
 
 Number.prototype.pad = function (len) {
     return (new Array(len+1).join("0") + this).slice(-len);
@@ -82,23 +82,28 @@ function sendFinishTime(timeLi, raceId, rzId) {
 
 	var url = '/race/' + raceId + '/finish/' + rzId + '/racer/' + userId;
 
-  localStorage.setItem('finish-time' + userId, finishTime);
+
 
 	$.ajax({
 		type: 'GET',
 		url: url,
 		data: {startTime:  finishTime},
+    error: function(xhr, status, error) {
+        localStorage.setItem('finish-time' + userId, finishTime);
+    }
+
 	});
 
 	timeLi.hide();
 
 }
 
-function resendTimes(raceId, rzId) {
+function resendFinishTimes(raceId, rzId) {
   var success = 0;
   var count = 0;
   $('#users').children().each(function() {
     var racerId = $(this).attr('value');
+
     var time = localStorage.getItem('finish-time' + racerId);
     if (time != null) {
         count ++;
@@ -108,6 +113,40 @@ function resendTimes(raceId, rzId) {
       		url: url,
           success: function (jqxhr, txt_status) {
              ++success;
+             localStorage.removeItem('finish-time' + racerId);
+             alert('removed' + racerId)
+          },
+      		data: {startTime:  time},
+          async: false,
+      	});
+    }
+
+
+  });
+
+  alert("uploaded times: " + success );
+
+
+}
+
+function resendStartTimes(raceId, rzId) {
+  var success = 0;
+  var count = 0;
+  $('.list').children().each(function() {
+    var racerId = $(this).attr('value');
+
+    var time = localStorage.getItem('start-time' + racerId);
+
+    if (time != null) {
+        count ++;
+        var url = '/race/' + raceId + '/start/' + rzId + '/racer/' + racerId;
+        $.ajax({
+      		type: 'GET',
+      		url: url,
+          success: function (jqxhr, txt_status) {
+             ++success;
+             localStorage.removeItem('start-time' + racerId);
+             alert('removed' + racerId)
           },
       		data: {startTime:  time},
           async: false,

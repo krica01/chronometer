@@ -335,6 +335,14 @@ i.material-icons.save_alt {
   position: absolute;
 }
 
+i.material-icons.save_alt.save_start {
+	font-size: 6em;
+
+  padding-top: 30px;
+  padding-left: 0px;
+  position: relative;
+}
+
 .record-bar {
 	text-align: center;
 	position: fixed;

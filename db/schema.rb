@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_113310) do
+ActiveRecord::Schema.define(version: 2023_10_31_210048) do
 
   create_table "race_permissions", force: :cascade do |t|
     t.integer "race_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_113310) do
     t.string "nickname"
     t.datetime "race_time"
     t.string "race_time_string"
+    t.integer "error_cd"
     t.index ["race_id"], name: "index_racers_on_race_id"
   end
 
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_113310) do
     t.datetime "field_name"
     t.datetime "rz_time"
     t.string "rzTimeString"
+    t.integer "error_cd", default: 0
     t.index ["racer_id"], name: "index_rz_records_on_racer_id"
     t.index ["rz_id"], name: "index_rz_records_on_rz_id"
   end

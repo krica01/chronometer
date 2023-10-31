@@ -5,16 +5,20 @@
 			<h2><%= rz.name %></h2>
 				<div>
 					<% if rz.getSortedRzRecords.size == 0 %>
-							<div class="del-rz">No results <%= link_to 'delete empty RZ ?', {:controller => :races, :action => :delete_rz, :rz_id => rz.id, :id => @race.id }, data: { confirm: 'Delete RZ?' }, :class => 'delete-rz' %></div>	
+							<div class="del-rz">No results <%= link_to 'delete empty RZ ?', {:controller => :races, :action => :delete_rz, :rz_id => rz.id, :id => @race.id }, data: { confirm: 'Delete RZ?' }, :class => 'delete-rz' %></div>
 					<% end %>
 					<table class="result-table">
-						
-						<% 
+
+						<%
 							@c = 1
 							rz.getSortedRzRecords.each do |rzRecord| %>
 							<tr>
 								<td><%= @c.to_s + '. ' + rzRecord.racer.display_name %></td>
-								<td><%= rzRecord.rzTime %></td>
+								<% if rzRecord.inError %>
+									<td>ERR<%= rzRecord.error_cd %></td>
+								<% else %>
+									<td><%= rzRecord.rzTime %></td>
+								<% end %>
 							</tr>
 							<% @c = @c + 1 %>
 						<% end %>
@@ -29,12 +33,16 @@
 	<h2>Overall results</h2>
 	<div>
 				<table class="result-table">
-					<% 
+					<%
 						@c = 1
 						@race.getOveralResults.each do |racer| %>
 						<tr>
 							<td><%= @c.to_s + '. ' + racer.display_name %></td>
-							<td><%= racer.race_time_string %></td>
+							<% if racer.inError %>
+								<td>ERR<%= racer.error_cd %></td>
+							<% else  %>
+								<td><%= racer.race_time_string %></td>
+							<% end %>
 						</tr>
 						<% @c = @c + 1 %>
 					<% end %>
