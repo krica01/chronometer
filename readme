@@ -3,3 +3,9 @@ rails_server -d
 sudo rails server -p 80 -e production
 
 sudo rails assets:precompile
+
+
+ps -ef | grep rails
+  289  sudo kill -9 572835
+  290  sudo rails assets:precompile
+  291  rails_server -d
